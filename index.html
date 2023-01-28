@@ -9,14 +9,41 @@
     <meta name="keywords" content="Quiz game, Warhammer 40,000">
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="assets/style.css">
+        <link rel="stylesheet" href="/assets/styling/style.css">
 </head>
 <body>
     <header>
+        <p>Title</p>
 
+        <!-- Score increments up with each correct answer. Down with incorrect? -->
+        <p>Score: <span id="game-score">0</span></p>
+
+        <!-- click to set payer name have tooltip, dissapears once clicked, save with local API -->
+        <p>Player: <span id="player-name"></span></p>
+        
     </header>
     <main>
-
+        <div>
+            <img src="" alt="">
+        </div>
+        <div id="game-area">
+            <div id="question">
+                <!-- Question replaced with js -->
+                <span id="quetion-text">Question</span> 
+                <!-- Implement Hints? float right, could have text or remove answer? -->
+                <span id="hint-text">Hint</span>
+            </div>
+            <!-- Answers set via js -->
+            <div id="answers">
+                <div id="answer1">Answer 1</div>
+                <div id="answer2">Answer 1</div>
+                <div id="answer3">Answer 1</div>
+                <div id="answer4">Answer 1</div>
+            </div>
+        </div>
+        <!-- only show one button Start button dissapears when game starts -->
+        <button id="btn-check-answer" class="btn">Check Answer</button>
+        <button id="btn-start-game" class="btn">Start Game</button>
     </main>
     <footer>
 
