@@ -9,7 +9,9 @@
     <meta name="keywords" content="Quiz game, Warhammer 40,000">
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="/assets/styling/style.css">
+        <link rel="stylesheet" href="assets/styling/style.css">
+        <!-- Javascript -->
+        <link rel="Javascript" href="/assets/javascript/script.js">
 </head>
 <body>
     <header>
@@ -23,42 +25,43 @@
         
     </header>
     <main>
-        <div>
-            <img src="" alt="">
+        <div id="game-area">
+            <div>
+                <img src="assets/images/ultramarine.jpg" alt="ultramarine in heroic pose">
+            </div>
+            <fieldset id="question-area">
+                <div id="question">
+                    <!-- Question replaced with js -->
+                    <legend id="quetion-text">Which fortified world of the Imperium watches over the Eye of Terror?<span id="hint-text">Hint</span></legend> 
+                    <!-- Implement Hints? float right, could have text or remove answer? -->
+                    
+                </div>
+                <!-- Answers set via js -->
+                <div id="answers">
+                    <div>
+                        <input type="radio" id="Jago" name="answer" value="Jago" required>
+                        <label for="Jago">Jago</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="Cadia" name="answer" value="Cadia">
+                        <label for="Cadia">Cadia</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="Titan" name="answer" value="Titan">
+                        <label for="Titan">Titan</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="Boros Prime" name="answer" value="Boros Prime">
+                        <label for="Boros Prime">Boros Prime</label>
+                    </div>
+                </div>
+                <div id="buttons">        
+                    <!-- only show one button Start button dissapears when game starts -->
+                    <button data-type="submit" id="btn-check-answer">Check Answer</button>
+                    <button id="btn-start-game">Start Game</button>
+                </div>
+            </fieldset>
         </div>
-        <fieldset id="game-area">
-            <div id="question">
-                <!-- Question replaced with js -->
-                <legend id="quetion-text">Which fortified world of the Imperium watches over the Eye of Terror?</legend> 
-                <!-- Implement Hints? float right, could have text or remove answer? -->
-                <span id="hint-text">Hint</span>
-            </div>
-            <!-- Answers set via js -->
-            <div id="answers">
-                <div>
-                    <input type="radio" id="Jago" name="answer" value="Jago" required>
-                    <label for="Jago">Jago</label>
-                </div>
-                <div>
-                    <input type="radio" id="Cadia" name="answer" value="Cadia">
-                    <label for="Cadia">Cadia</label>
-                </div>
-                <div>
-                    <input type="radio" id="Titan" name="answer" value="Titan">
-                    <label for="Titan">Titan</label>
-                </div>
-                <div>
-                    <input type="radio" id="Boros Prime" name="answer" value="Boros Prime">
-                    <label for="Boros Prime">Boros Prime</label>
-                </div>
-            </div>
-            <div>        
-                <!-- only show one button Start button dissapears when game starts -->
-                <button id="btn-check-answer" class="btn">Check Answer</button>
-                <button id="btn-start-game" class="btn">Start Game</button>
-            </div>
-        </fieldset>
-
     </main>
     <footer>
 
