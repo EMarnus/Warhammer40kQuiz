@@ -29,36 +29,37 @@
             <div>
                 <img src="assets/images/ultramarine.jpg" alt="ultramarine in heroic pose">
             </div>
+            <p><span id="gameNumber">0</span> of 4 Questions</p>
             <fieldset id="question-area">
                 <div id="question">
                     <!-- Question replaced with js -->
-                    <legend id="quetion-text">Which fortified world of the Imperium watches over the Eye of Terror?<span id="hint-text">Hint</span></legend> 
+                    <legend id="quetion-text">So you think you know Warhammer?<span id="hint-text">Hint</span></legend> 
                     <!-- Implement Hints? float right, could have text or remove answer? -->
                     
                 </div>
                 <!-- Answers set via js -->
                 <div id="answers">
                     <div>
-                        <input type="radio" id="Jago" name="answer" value="Jago" required>
-                        <label for="Jago">Jago</label>
+                        <input type="radio" value="question0" name="answers" required>
+                        <label id="question0" class="answer" for="question0">0</label>
                     </div>
                     <div>
-                        <input type="radio" id="Cadia" name="answer" value="Cadia">
-                        <label for="Cadia">Cadia</label>
+                        <input type="radio" value="question1" name="answers">
+                        <label id="question1" class="answer" for="question1">0</label>
                     </div>
                     <div>
-                        <input type="radio" id="Titan" name="answer" value="Titan">
-                        <label for="Titan">Titan</label>
+                        <input type="radio" value="question2" name="answers">
+                        <label id="question2" class="answer" for="question2">0</label>
                     </div>
                     <div>
-                        <input type="radio" id="Boros Prime" name="answer" value="Boros Prime">
-                        <label for="Boros Prime">Boros Prime</label>
+                        <input type="radio" value="question3" name="answers">
+                        <label id="question3" class="answer" for="question3">0</label>
                     </div>
                 </div>
                 <div id="buttons">        
                     <!-- only show one button Start button dissapears when game starts -->
-                    <button data-type="submit" id="btn-check-answer">Check Answer</button>
-                    <button id="btn-start-game">Start Game</button>
+                    <button data-type="start" id="btn-check-answer">Start Game</button>
+                    <button id="btn-start-game"></button>
                 </div>
             </fieldset>
         </div>
