@@ -1,5 +1,14 @@
 console.log("JS Loaded");
-let gameNumber = 0;
+
+// // Declaring variables for use in HTML
+// let gameNumber = document.getElementById("gameNumber").innerHTML;
+// let question = document.getElementById("question-text").innerHTML;
+// let answer0 = document.getElementById("question0").innerHTML;
+// let answer1 = document.getElementById("question1").innerHTML;
+// let answer2 = document.getElementById("question2").innerHTML;
+// let answer3 = document.getElementById("question3").innerHTML;
+
+let gameNumber;
 
 /*
 List all the questions.
@@ -61,13 +70,11 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
           if (this.getAttribute("data-type") === "start") {
             startGame()
-          } else if (this.getAttribute("data-type") === "submit") {
-            console.log("Checking Answers")  
+          } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer()
             } else  {
               //for use if more factions are added.
                 let gameType = this.getAttribute("data-type");
-                alert(`You clicked ${gameType}`);
             }
         });
     }
@@ -86,13 +93,12 @@ function startGame () {
   
   
   //body text changes
-  document.getElementById("gameNumber").innerHTML = gameNumber +1;
-  document.getElementById("quetion-text").innerHTML = spaceMarineQuestions[gameNumber].question;
+  gameNumber = 0;
+  document.getElementById("question-text").innerHTML = spaceMarineQuestions[gameNumber].question;
   document.getElementById("question0").innerHTML = spaceMarineQuestions[gameNumber].options[0];
   document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
   document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
   document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
-  
 }
 
 
@@ -102,30 +108,41 @@ function startGame () {
 This function is to check the answers. Run when button is clicked
 */
 function checkAnswer() {
-    console.log(spaceMarineQuestions[gameNumber].answer); //working
+    let inputs = document.getElementsByTagName("input");
+    let labels = document.getElementsByTagName("label");
+    
+   //Pulls correct Answer
+    let correctAnswer = spaceMarineQuestions[gameNumber].answer //Working
+    console.log(correctAnswer); //Working
+    let selected = "";
 
-    let label = document.getElementsByClassName('answer');
-    console.log(label.value)
-
-    for (let i = 0, length = label.length; i < length; i++) {
-      if (label[i].checked) {
-        if (label[i].innerHTML == spaceMarineQuestions[gameNumber].answer){
-          //Something to indicate correct answers
-          gameNumber + 1;
-          document.getElementById("gameNumber").innerHTML = gameNumber + 1;
-          console.log("Complete True");
-        } else {
-          alert(`Incorrect, the correct answer is ${spaceMarineQuestions[gameNumber].answer}.`);
-        }
-        document.getElementById("quetion-text").innerHTML = spaceMarineQuestions[gameNumber].question;
-        document.getElementById("question0").innerHTML = spaceMarineQuestions[gameNumber].options[0];
-        document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
-        document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
-        document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
-
-        break;
+    //sets selected answer for above
+    for (let i = 0, length = inputs.length; i < length; i++) {
+      if (inputs[i].checked) {
+        selected = labels[i].textContent}
+        //console.log(selected)
       }
-    }
-  }
+      console.log(selected);
 
+      if (selected == spaceMarineQuestions[gameNumber].answer){
+        //Something to indicate correct answers
+        console.log("Complete True");
+        nextQuestions ()
+      } else {
+        alert(`Incorrect, the correct answer is ${spaceMarineQuestions[gameNumber].answer}.`);
+      }
+        
+      }
+
+
+  function nextQuestions () {
+    gameNumber = gameNumber +1;
+    document.getElementById("question-text").innerHTML = spaceMarineQuestions[gameNumber].question;
+    document.getElementById("question0").innerHTML = spaceMarineQuestions[gameNumber].options[0];
+    document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
+    document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
+    document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
+
+  }
+  
   
