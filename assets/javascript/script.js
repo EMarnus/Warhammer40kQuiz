@@ -11,6 +11,30 @@ console.log("JS Loaded");
 let gameNumber;
 
 /*
+This  stores and retreives Username and score.
+*/
+function populateStorage() {
+  let name = document.getElementById('player-name').innerHTML
+  localStorage.setItem("username", name);
+}
+
+function retreiveStorage () {
+  if (!localStorage.getItem('username')) {
+    return;
+  } else {
+    let name = localStorage.getItem("username");
+    document.getElementById('player-name').innerHTML = name;
+  }
+}
+
+document.addEventListener("load", retreiveStorage());
+
+let nameStorage = document.getElementById("player-name");
+nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
+
+
+
+/*
 List all the questions.
 */
 let spaceMarineQuestions = [{
@@ -70,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
           if (this.getAttribute("data-type") === "start") {
             startGame()
+            populateStorage() // Remove
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer()
             } else  {
