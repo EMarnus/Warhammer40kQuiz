@@ -3,10 +3,10 @@ console.log("JS Loaded");
 // // Declaring variables for use in HTML
 // let gameNumber = document.getElementById("gameNumber").innerHTML;
 // let question = document.getElementById("question-text").innerHTML;
-// let answer0 = document.getElementById("question0").innerHTML;
-// let answer1 = document.getElementById("question1").innerHTML;
-// let answer2 = document.getElementById("question2").innerHTML;
-// let answer3 = document.getElementById("question3").innerHTML;
+// let answer0 = document.getElementById("labelQuestion0").innerHTML;
+// let answer1 = document.getElementById("labelQuestion1").innerHTML;
+// let answer2 = document.getElementById("labelQuestion2").innerHTML;
+// let answer3 = document.getElementById("labelQuestion3").innerHTML;
 
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
@@ -37,9 +37,11 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 
 
 /*
-List all the questions.
+Import questions for quiz.
 */
-let spaceMarineQuestions = [{
+// const spaceMarineQuestions = require("./questions")
+
+const spaceMarineQuestions = [{
   numb: 0,
   question: "Which fortified world of the Imperium watched over the Eye of Terror?",
   answer: "Cadia",
@@ -85,7 +87,6 @@ let spaceMarineQuestions = [{
 }
 ]
 
-
 /*
 This funciton is to add event listener to Buttons once page loads
 */
@@ -121,12 +122,12 @@ function startGame () {
   
   //body text changes
   gameNumber = 0;
-  document.getElementById("question-text").innerHTML = spaceMarineQuestions[gameNumber].question;
-  document.getElementById("question0").innerHTML = spaceMarineQuestions[gameNumber].options[0];
-  document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
-  document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
-  document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
-  document.getElementById("gameNumber").innerHTML = gameNumber+1;
+  document.getElementById("question-text").innerText = spaceMarineQuestions[gameNumber].question;
+  document.getElementById("labelQuestion0").innerText = spaceMarineQuestions[gameNumber].options[0];
+  document.getElementById("labelQuestion1").innerText = spaceMarineQuestions[gameNumber].options[1];
+  document.getElementById("labelQuestion2").innerText = spaceMarineQuestions[gameNumber].options[2];
+  document.getElementById("labelQuestion3").innerText = spaceMarineQuestions[gameNumber].options[3];
+  document.getElementById("gameNumber").innerText = gameNumber+1;
 }
 
 
@@ -173,12 +174,12 @@ function checkAnswer() {
 
   function nextQuestions () {
     gameNumber = gameNumber +1;
-    document.getElementById("question-text").innerHTML = spaceMarineQuestions[gameNumber].question;
-    document.getElementById("question0").innerHTML = spaceMarineQuestions[gameNumber].options[0];
-    document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
-    document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
-    document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
-    document.getElementById("gameNumber").innerHTML = gameNumber+1;
+    document.getElementById("question-text").innerText = spaceMarineQuestions[gameNumber].question;
+    document.getElementById("labelQuestion0").innerText = spaceMarineQuestions[gameNumber].options[0];
+    document.getElementById("labelQuestion1").innerText = spaceMarineQuestions[gameNumber].options[1];
+    document.getElementById("labelQuestion2").innerText = spaceMarineQuestions[gameNumber].options[2];
+    document.getElementById("labelQuestion3").innerText = spaceMarineQuestions[gameNumber].options[3];
+    document.getElementById("gameNumber").innerText = gameNumber+1;
 
   }
   
