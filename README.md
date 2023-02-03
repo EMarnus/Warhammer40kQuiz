@@ -84,7 +84,4 @@ The live link can be found here - https://code-institute-org.github.io/love-math
 
 - The photos used on the home and sign up page are from This Open Source site
 - The images used for the gallery page were taken from this other open source site
-
-### Media
-
 - Template taken from [Code Institute](https://github.com/Code-Institute-Solutions/readme-love-maths/blob/master/README.md?plain=1)

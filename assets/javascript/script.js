@@ -152,9 +152,13 @@ function checkAnswer() {
       }
       //console.log(selected);
 
-      if (gameNumber == spaceMarineQuestions.length-1) {
+      if (gameNumber == spaceMarineQuestions.length-1 && selected == spaceMarineQuestions[gameNumber].answer) {
+        gameScore = gameScore + 1;
+        document.getElementById("game-score").innerText = gameScore;
         //console.log("End of quiz") 
-        openModal (); //Trigger Model
+        openModal ();
+      } else if (gameNumber == spaceMarineQuestions.length-1 && selected != spaceMarineQuestions[gameNumber].answer) {
+        openModal ();
       } else if (selected == spaceMarineQuestions[gameNumber].answer){
         //Something to indicate correct answers
         nextQuestions ();
@@ -163,10 +167,11 @@ function checkAnswer() {
           console.log(gameScore)
         }
         gameScore = gameScore + 1;
-        document.getElementById("game-score").innerHTML = gameScore;
+        document.getElementById("game-score").innerText = gameScore;
         console.log(gameScore)
       } else {
-        alert(`Incorrect, the correct answer is ${spaceMarineQuestions[gameNumber].answer}.`);
+        alert(`Incorrect, the correct answer was ${spaceMarineQuestions[gameNumber].answer}.`);
+        nextQuestions ();
       }
         
       }
@@ -193,7 +198,10 @@ var modal = document.getElementById("myModal");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
+
+/*
+When the user clicks on the button, open the modal
+*/
 function openModal() {
   modal.style.display = "block";
 }
