@@ -8,7 +8,7 @@ console.log("JS Loaded");
 // let answer2 = document.getElementById("question2").innerHTML;
 // let answer3 = document.getElementById("question3").innerHTML;
 
-let gameNumber;
+let gameNumber; //This is the index number of current question.
 
 /*
 This  stores and retreives Username and score.
@@ -39,7 +39,7 @@ List all the questions.
 */
 let spaceMarineQuestions = [{
   numb: 0,
-  question: "Which fortified world of the Imperium watches over the Eye of Terror?",
+  question: "Which fortified world of the Imperium watched over the Eye of Terror?",
   answer: "Cadia",
   options: [
     "Jago",
@@ -124,6 +124,7 @@ function startGame () {
   document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
   document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
   document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
+  document.getElementById("gameNumber").innerHTML = gameNumber+1;
 }
 
 
@@ -138,7 +139,7 @@ function checkAnswer() {
     
    //Pulls correct Answer
     let correctAnswer = spaceMarineQuestions[gameNumber].answer //Working
-    console.log(correctAnswer); //Working
+    //console.log(correctAnswer); //Working
     let selected = "";
 
     //sets selected answer for above
@@ -147,11 +148,12 @@ function checkAnswer() {
         selected = labels[i].textContent}
         //console.log(selected)
       }
-      console.log(selected);
+      //console.log(selected);
 
-      if (selected == spaceMarineQuestions[gameNumber].answer){
+      if (gameNumber == spaceMarineQuestions.length-1) {
+        console.log("End of quiz") //Trigger Model
+      } else if (selected == spaceMarineQuestions[gameNumber].answer){
         //Something to indicate correct answers
-        console.log("Complete True");
         nextQuestions ()
       } else {
         alert(`Incorrect, the correct answer is ${spaceMarineQuestions[gameNumber].answer}.`);
@@ -167,6 +169,7 @@ function checkAnswer() {
     document.getElementById("question1").innerHTML = spaceMarineQuestions[gameNumber].options[1];
     document.getElementById("question2").innerHTML = spaceMarineQuestions[gameNumber].options[2];
     document.getElementById("question3").innerHTML = spaceMarineQuestions[gameNumber].options[3];
+    document.getElementById("gameNumber").innerHTML = gameNumber+1;
 
   }
   
