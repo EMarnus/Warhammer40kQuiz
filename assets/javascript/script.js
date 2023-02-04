@@ -1,6 +1,7 @@
-console.log("JS Loaded");
-
-
+import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
+console.log(spaceMarineQuestions);
+import necronQuesions from "./necron.json" assert {type: "json"};
+console.log(necronQuesions);
 
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
@@ -31,21 +32,13 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 
 
 /*
-Import questions for quiz.
+Sets questions for quiz.
 */
-const questionSet = [];
-const gameFactions = ["necron.json", "spacemarine.json"]
+let questionSet = spaceMarineQuestions.concat(necronQuesions); 
+//questionSet.push(necronQuesions)
+//questionSet.push(spaceMarineQuestions)
+console.log(questionSet);
 
-// Use Promise.all() to load all the files at once
-Promise.all(gameFactions.map(gameFactions =>
-  fetch(gameFactions)
-    .then(response => response.json())
-    .then(jsonData => questionSet.push(jsonData))
-))
-.then(() => {
-  // All files have been loaded and their JSON data is now stored in the `data` array
-  console.log(questionSet);
-});
 
 /*
 This funciton is to add event listener to Buttons once page loads
@@ -94,6 +87,7 @@ function startGame () {
   document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
   document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
   document.getElementById("gameNumber").innerText = gameNumber+1;
+  document.getElementById("questionNumber").innerText = questionSet.length;
 }
 
 
@@ -197,7 +191,9 @@ window.onclick = function(event) {
 Function to reset game without reloading page
 */
 function resetGame (){
+document.getElementById("btn-check-answer").setAttribute("class", "")
 gameNumber = 0;
 gameScore = 0;
+document.getElementById("game-score").innerText = gameScore;
 startGame ();
 }
