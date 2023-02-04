@@ -1,57 +1,44 @@
+[{
+  "faction": "SpaceMarine",
+  "question": "Which fortified world of the Imperium watched over the Eye of Terror?",
+  "answer": "Cadia",
+  "options": [
+    "Jago",
+    "Cadia",
+    "Titan",
+    "Boros Prime"
+  ]
+},
 {
-    "faction": "SpaceMarine",
-    "question": "Which fortified world of the Imperium watched over the Eye of Terror?",
-    "answer": "Cadia",
-    "options": [
-      "Jago",
-      "Cadia",
-      "Titan",
-      "Boros Prime"
-    ]
-  },
-  {
-    "faction": "SpaceMarine",
-    "question": "Which space marine chapter is stationed on Holy Terra?",
-    "answer": "Imperial Fists",
-    "options": [
-      "Imperial Fists",
-      "Blood Ravens",
-      "Iron Hands",
-      "Ultra Marines"
-    ]
-  },
-  {
-    "faction": "SpaceMarine",
-    "question": "What caused the eye of terror?",
-    "answer": "The birth of Slaanesh",
-    "options": [
-      "A space giant waking up",
-      "The Horus Heresy",
-      "The birth of Slaanesh",
-      "Unknow"
-    ]
-  },
-  {
-    "faction": "SpaceMarine",
-    "question": "Who is Kaldor Draigo?",
-    "answer": "Supreme Grand Master of the Grey Knights",
-    "options": [
-      "A Primarch",
-      "Supreme Grand Master of the Grey Knights",
-      "A Planetary Govenor",
-      "The Fabricator-General of Mars"
-    ]
-  }
-  
-
+  "faction": "SpaceMarine",
+  "question": "Which space marine chapter is stationed on Holy Terra?",
+  "answer": "Imperial Fists",
+  "options": [
+    "Imperial Fists",
+    "Blood Ravens",
+    "Iron Hands",
+    "Ultra Marines"
+  ]
+},
 {
-    "faction": "Necron",
-    "question": "Which Dynasty is Ixatotekh part of?",
-    "answer": "Maynarkh Dynasty",
-    "options": [
-      "Charnovokh Dynasty",
-      "Maynarkh Dynasty",
-      "Nekthyst Dynasty",
-      "Thokt Dynasty"
-    ]
-  },
+  "faction": "SpaceMarine",
+  "question": "What caused the eye of terror?",
+  "answer": "The birth of Slaanesh",
+  "options": [
+    "A space giant waking up",
+    "The Horus Heresy",
+    "The birth of Slaanesh",
+    "Unknow"
+  ]
+},
+{
+  "faction": "SpaceMarine",
+  "question": "Who is Kaldor Draigo?",
+  "answer": "Supreme Grand Master of the Grey Knights",
+  "options": [
+    "A Primarch",
+    "Supreme Grand Master of the Grey Knights",
+    "A Planetary Govenor",
+    "The Fabricator-General of Mars"
+  ]
+}]
