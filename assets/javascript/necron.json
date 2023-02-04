@@ -1,0 +1,34 @@
+{
+    "faction": "Necron",
+    "question": "Who are the ancient enemies of the Necron?",
+    "answer": "Imperial Fists",
+    "options": [
+      "Tau",
+      "Imperium of Man",
+      "Necrontyr",
+      "Old Ones"
+    ]
+  },
+  {
+    "faction": "Necron",
+    "question": "What caused the eye of terror?",
+    "answer": "The birth of Slaanesh",
+    "options": [
+      "A space giant waking up",
+      "The Horus Heresy",
+      "The birth of Slaanesh",
+      "Unknow"
+    ]
+  },
+  {
+    "faction": "Necron",
+    "question": "The Deceiver was also known as",
+    "answer": "The Messenger",
+    "options": [
+      "The Nightbringer",
+      "The Flayer",
+      "The Messenger",
+      "The World Shaper"
+    ]
+  }
+  

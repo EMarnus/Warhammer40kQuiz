@@ -1,12 +1,6 @@
 console.log("JS Loaded");
 
-// // Declaring variables for use in HTML
-// let gameNumber = document.getElementById("gameNumber").innerHTML;
-// let question = document.getElementById("question-text").innerHTML;
-// let answer0 = document.getElementById("labelQuestion0").innerHTML;
-// let answer1 = document.getElementById("labelQuestion1").innerHTML;
-// let answer2 = document.getElementById("labelQuestion2").innerHTML;
-// let answer3 = document.getElementById("labelQuestion3").innerHTML;
+
 
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
@@ -39,59 +33,26 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 /*
 Import questions for quiz.
 */
-// const spaceMarineQuestions = require("./questions")
+const questionSet = [];
+const gameFactions = ["necron.json", "spacemarine.json"]
 
-const spaceMarineQuestions = [{
-  numb: 0,
-  question: "Which fortified world of the Imperium watched over the Eye of Terror?",
-  answer: "Cadia",
-  options: [
-    "Jago",
-    "Cadia",
-    "Titan",
-    "Boros Prime"
-  ]
-},
-{
-  numb: 1,
-  question: "Which space marine chapter is stationed on Holy Terra?",
-  answer: "Imperial Fists",
-  options: [
-    "Imperial Fists",
-    "Blood Ravens",
-    "Iron Hands",
-    "Ultra Marines"
-  ]
-},
-{
-  numb: 2,
-  question: "What caused the eye of terror?",
-  answer: "The birth of Slaanesh",
-  options: [
-    "A space giant waking up",
-    "The Horus Heresy",
-    "The birth of Slaanesh",
-    "Unknow"
-  ]
-},
-{
-  numb: 3,
-  question: "Who is Kaldor Draigo?",
-  answer: "Supreme Grand Master of the Grey Knights",
-  options: [
-    "A Primarch",
-    "Supreme Grand Master of the Grey Knights",
-    "A Planetary Govenor",
-    "The Fabricator-General of Mars"
-  ]
-}
-]
+// Use Promise.all() to load all the files at once
+Promise.all(gameFactions.map(gameFactions =>
+  fetch(gameFactions)
+    .then(response => response.json())
+    .then(jsonData => questionSet.push(jsonData))
+))
+.then(() => {
+  // All files have been loaded and their JSON data is now stored in the `data` array
+  console.log(questionSet);
+});
 
 /*
 This funciton is to add event listener to Buttons once page loads
 */
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button");
+    
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
@@ -126,11 +87,11 @@ function startGame () {
   
   //body text changes
   gameNumber = 0;
-  document.getElementById("question-text").innerText = spaceMarineQuestions[gameNumber].question;
-  document.getElementById("labelQuestion0").innerText = spaceMarineQuestions[gameNumber].options[0];
-  document.getElementById("labelQuestion1").innerText = spaceMarineQuestions[gameNumber].options[1];
-  document.getElementById("labelQuestion2").innerText = spaceMarineQuestions[gameNumber].options[2];
-  document.getElementById("labelQuestion3").innerText = spaceMarineQuestions[gameNumber].options[3];
+  document.getElementById("question-text").innerText = questionSet[gameNumber].question;
+  document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
+  document.getElementById("labelQuestion1").innerText = questionSet[gameNumber].options[1];
+  document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
+  document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
   document.getElementById("gameNumber").innerText = gameNumber+1;
 }
 
@@ -144,7 +105,7 @@ function checkAnswer() {
     let labels = document.getElementsByTagName("label");
     
    //Pulls correct Answer
-    let correctAnswer = spaceMarineQuestions[gameNumber].answer //Working
+    let correctAnswer = questionSet[gameNumber].answer //Working
     //console.log(correctAnswer); //Working
     let selected = "";
 
@@ -156,14 +117,14 @@ function checkAnswer() {
       }
       //console.log(selected);
 
-      if (gameNumber == spaceMarineQuestions.length-1 && selected == spaceMarineQuestions[gameNumber].answer) {
+      if (gameNumber == questionSet.length-1 && selected == questionSet[gameNumber].answer) {
         gameScore = gameScore + 1;
         document.getElementById("game-score").innerText = gameScore;
         //console.log("End of quiz") 
         openModal ();
-      } else if (gameNumber == spaceMarineQuestions.length-1 && selected != spaceMarineQuestions[gameNumber].answer) {
+      } else if (gameNumber == questionSet.length-1 && selected != questionSet[gameNumber].answer) {
         openModal ();
-      } else if (selected == spaceMarineQuestions[gameNumber].answer){
+      } else if (selected == questionSet[gameNumber].answer){
         //Something to indicate correct answers
         document.getElementById("btn-check-answer").setAttribute("class", "correct-answer")
         //nextQuestions ();
@@ -193,11 +154,11 @@ function checkAnswer() {
 
   function nextQuestions () {
     gameNumber = gameNumber +1;
-    document.getElementById("question-text").innerText = spaceMarineQuestions[gameNumber].question;
-    document.getElementById("labelQuestion0").innerText = spaceMarineQuestions[gameNumber].options[0];
-    document.getElementById("labelQuestion1").innerText = spaceMarineQuestions[gameNumber].options[1];
-    document.getElementById("labelQuestion2").innerText = spaceMarineQuestions[gameNumber].options[2];
-    document.getElementById("labelQuestion3").innerText = spaceMarineQuestions[gameNumber].options[3];
+    document.getElementById("question-text").innerText = questionSet[gameNumber].question;
+    document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
+    document.getElementById("labelQuestion1").innerText = questionSet[gameNumber].options[1];
+    document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
+    document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
   }
   
