@@ -77,11 +77,10 @@ The live link can be found here - https://code-institute-org.github.io/love-math
 
 - Local storage - Mentor Can S and https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API & https://stackoverflow.com/questions/47378194/fire-a-function-when-innerhtml-of-element-changes
 - Deselecting Radio buttons script from https://stackoverflow.com/questions/15784554/how-to-uncheck-radio-button-javascript
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- Import from json https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules/
+- Combining quesion arrays https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items?noredirect=1&lq=1 
 
 ### Media
 
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
+- Hero Image taken from
 - Template taken from [Code Institute](https://github.com/Code-Institute-Solutions/readme-love-maths/blob/master/README.md?plain=1)

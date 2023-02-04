@@ -38,7 +38,7 @@ let questionSet = spaceMarineQuestions.concat(necronQuesions);
 //questionSet.push(necronQuesions)
 //questionSet.push(spaceMarineQuestions)
 console.log(questionSet);
-
+// Need to add check-box with if () to set questions.
 
 /*
 This funciton is to add event listener to Buttons once page loads
