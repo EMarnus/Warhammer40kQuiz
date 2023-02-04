@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (this.getAttribute("data-type") === "start") {
             startGame()
             populateStorage() // Remove
+            console.log("questionSet")
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer()
             } else if (this.getAttribute("data-type") === "next") { 
