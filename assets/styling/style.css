@@ -139,15 +139,13 @@ legend {
   border-radius: 0;
   border: 0;
   font-size: 14px;
+  margin: 5px 0px 5px 0px;
 }
 
-/* Change between btn-check-answer & btn-start-game depending on game stage*/
-#btn-start-game {
-  display: none;
-}
 
 #buttons {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
   color: black;
@@ -155,14 +153,26 @@ legend {
 
 button:hover,
 button:focus {
-  color: #999;
-  transition-duration: 0.4s;
+  color: #d4d0d0;
+  border: 2px solid white;
 }
 
 button:active {
   background-color: white;
   color: black;
   outline: 1px solid black;
+}
+
+#btn-reset-game {
+  margin-top: 20px;
+}
+
+.correct-answer {
+  background-color: green;
+}
+
+.incorrect-answer {
+  background-color: red;
 }
 
 /* Form Styling ^ */

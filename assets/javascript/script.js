@@ -10,7 +10,7 @@ console.log("JS Loaded");
 
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
-console.log(gameScore)
+//console.log(gameScore)
 
 /*
 This  stores and retreives Username and score.
@@ -100,7 +100,11 @@ document.addEventListener("DOMContentLoaded", function() {
             populateStorage() // Remove
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer()
-            } else  {
+            } else if (this.getAttribute("data-type") === "next") { 
+              nextQuestions()
+              } else if (this.getAttribute("data-type") === "reset") { 
+              resetGame()
+              } else  {
               //for use if more factions are added.
                 let gameType = this.getAttribute("data-type");
             }
@@ -161,7 +165,8 @@ function checkAnswer() {
         openModal ();
       } else if (selected == spaceMarineQuestions[gameNumber].answer){
         //Something to indicate correct answers
-        nextQuestions ();
+        document.getElementById("btn-check-answer").setAttribute("class", "correct-answer")
+        //nextQuestions ();
         if (!gameScore){
           gameScore = 0;
           console.log(gameScore)
@@ -170,10 +175,19 @@ function checkAnswer() {
         document.getElementById("game-score").innerText = gameScore;
         console.log(gameScore)
       } else {
-        alert(`Incorrect, the correct answer was ${spaceMarineQuestions[gameNumber].answer}.`);
-        nextQuestions ();
+        document.getElementById("btn-check-answer").setAttribute("class", "incorrect-answer")
+        //nextQuestions ();
       }
-        
+
+      //This deselects the radio button when adding new answers. Taken from https://stackoverflow.com/questions/15784554/how-to-uncheck-radio-button-javascript (Ewald Bos)
+      let elements = document.getElementsByTagName("input");
+
+      for (let i = 0; i < elements.length; i++) {
+        if (elements[i].type == "radio") {
+            elements[i].checked = false;
+        }
+    }
+      
       }
 
 
@@ -185,7 +199,6 @@ function checkAnswer() {
     document.getElementById("labelQuestion2").innerText = spaceMarineQuestions[gameNumber].options[2];
     document.getElementById("labelQuestion3").innerText = spaceMarineQuestions[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
-
   }
   
 
@@ -216,4 +229,13 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+
+/*
+Function to reset game without reloading page
+*/
+function resetGame (){
+gameNumber = 0;
+gameScore = 0;
+startGame ();
 }

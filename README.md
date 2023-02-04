@@ -76,7 +76,7 @@ The live link can be found here - https://code-institute-org.github.io/love-math
 ### Content 
 
 - Local storage - Mentor Can S and https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API & https://stackoverflow.com/questions/47378194/fire-a-function-when-innerhtml-of-element-changes
-- The text for the Home page was taken from Wikipedia Article A
+- Deselecting Radio buttons script from https://stackoverflow.com/questions/15784554/how-to-uncheck-radio-button-javascript
 - Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
