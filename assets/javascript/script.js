@@ -34,18 +34,20 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 /*
 Sets questions for quiz.
 */
-let questionSet = spaceMarineQuestions.concat(necronQuesions);
+let questionSet = spaceMarineQuestions.concat(necronQuesions); //Default qeustionSet
+console.log(questionSet)
 let selectedFactions = [];
-//questionSet.push(necronQuesions)
-//questionSet.push(spaceMarineQuestions)
-//console.log(questionSet);
-// Need to add check-box with if () to set questions.
+
 
 
 /*
-Section for seting Factions used for questions. Get factions selected and pass to be concat
+Section for setting Factions if any were changed in the dropdown
 */
+
+/**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
+  console.log("running setFactions function")
+  questionSet = [];
   let checkboxes = document.getElementById("checkboxes");
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
 
@@ -58,6 +60,9 @@ function setFactions() {
   }
 
 
+/**
+Function to add selectedFactions to questionSet.
+*/
   function setQuestions() {
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
       questionSet.concat(selectedFactions[i])
@@ -129,6 +134,7 @@ multiSelect.addEventListener('click', function(e) {
 document.addEventListener('click', function(e){
   if (expanded) {
     checkboxes.style.display = "none";
+    setFactions();
     expanded = false;
   }
 }, false)
