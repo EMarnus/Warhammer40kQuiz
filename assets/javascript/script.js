@@ -75,9 +75,7 @@ function showButton(){
   console.log("showButton")
   let next = document.getElementById("btn-next-answer");
   let reset = document.getElementById("btn-reset-game");
-  console.log("showButton")
-  console.log(next)
-  console.log(reset)
+
   next.style.display = "block";
   reset.style.display = "block";
 }
@@ -141,36 +139,39 @@ function checkAnswer() {
     
    //Pulls correct Answer
     let correctAnswer = questionSet[gameNumber].answer //Working
-    //console.log(correctAnswer); //Working
+    console.log(correctAnswer); //Working
+    console.log(gameNumber)
+
     let selected = "";
+    console.log(selected);
 
     //sets selected answer for above
     for (let i = 0, length = inputs.length; i < length; i++) {
       if (inputs[i].checked) {
-        selected = labels[i].textContent}
+        selected = labels[i-1].textContent}
         //console.log(selected)
       }
-      //console.log(selected);
+      console.log(selected);
 
-      if (gameNumber == questionSet.length-1 && selected == questionSet[gameNumber].answer) {
+      if (gameNumber == questionSet.length-1 && selected == correctAnswer) { //Answer check correct end of game
         gameScore = gameScore + 1;
         document.getElementById("game-score").innerText = gameScore;
         //console.log("End of quiz") 
         openModal ();
-      } else if (gameNumber == questionSet.length-1 && selected != questionSet[gameNumber].answer) {
+      } else if (gameNumber == questionSet.length-1 && selected != correctAnswer) { //Answer check incorrect end of game
         openModal ();
-      } else if (selected == questionSet[gameNumber].answer){
+      } else if (selected == correctAnswer){//Answer check correct
         //Something to indicate correct answers
         document.getElementById("btn-check-answer").setAttribute("class", "correct-answer")
         //nextQuestions ();
         if (!gameScore){
           gameScore = 0;
-          console.log(gameScore)
+          //console.log(gameScore)
         }
         gameScore = gameScore + 1;
         document.getElementById("game-score").innerText = gameScore;
         console.log(gameScore)
-      } else {
+      } else {//Answer check incorrect
         document.getElementById("btn-check-answer").setAttribute("class", "incorrect-answer")
         //nextQuestions ();
       }
@@ -195,6 +196,7 @@ function checkAnswer() {
     document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
     document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
+    document.getElementById("btn-check-answer").setAttribute("class", "")
   }
   
 
