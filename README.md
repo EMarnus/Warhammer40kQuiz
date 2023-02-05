@@ -79,6 +79,7 @@ The live link can be found here - https://code-institute-org.github.io/love-math
 - Deselecting Radio buttons script from https://stackoverflow.com/questions/15784554/how-to-uncheck-radio-button-javascript
 - Import from json https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules/
 - Combining quesion arrays https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items?noredirect=1&lq=1 
+- Checkbox for faction selection https://stackoverflow.com/questions/17714705/how-to-use-checkbox-inside-select-option
 
 ### Media
 

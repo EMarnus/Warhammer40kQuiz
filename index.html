@@ -14,15 +14,36 @@
         <link rel="Javascript" href="/assets/javascript/script.js">
 </head>
 <body>
-    <header>
-        <p>Title</p>
+    <header id="header-container">
+        <div id="left-container">
+            <p><h2>The expanding Warhammer 40,000 Quiz</h2></p>
 
-        <!-- Score increments up with each correct answer. Down with incorrect? -->
-        <p>Score: <span id="game-score">0</span></p>
-
-        <!-- click to set payer name have tooltip, dissapears once clicked, save with local API, pull random names from a list?-->
-        <p>Player: <input id="player-name" placeholder="Set name"></p>
-        
+            <!-- click to set payer name have tooltip, dissapears once clicked, save with local API, pull random names from a list?-->
+            <h3><p>Player: <input id="player-name" placeholder="Set name"></h3></p>
+    
+            <!-- Score increments up with each correct answer. Down with incorrect? -->
+            <p><h3>Score: <span id="game-score">0</span></h3></p>
+        </div>
+        <div id="right-container">
+            <form>
+                <div class="multiselect">
+                  <div class="selectBox">
+                    <select>
+                      <option>Select an option</option>
+                    </select>
+                    <div class="overSelect"></div>
+                  </div>
+                  <div id="checkboxes">
+                    <label for="one">
+                      <input type="checkbox" id="one" />Space Marine</label>
+                    <label for="two">
+                      <input type="checkbox" id="two" />Necron</label>
+                    <label for="three">
+                      <input type="checkbox" id="three" />Third checkbox</label>
+                  </div>
+                </div>
+              </form>
+        </div>
     </header>
     <main>
         <div id="game-area">

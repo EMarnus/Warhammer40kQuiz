@@ -67,6 +67,31 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+/*
+Scripts for the Faction Checkbox dropdown.
+*/
+let expanded = false;
+const multiSelect = document.querySelector('.multiselect');
+
+multiSelect.addEventListener('click', function(e) {
+  const checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+  e.stopPropagation();
+}, true)
+
+document.addEventListener('click', function(e){
+  if (expanded) {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}, false)
+
 
 /*
 Replace body text with question text and button text/data-type when start is clicked.
