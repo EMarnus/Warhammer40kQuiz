@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (this.getAttribute("data-type") === "start") {
             startGame()
             populateStorage() // Remove
+            showButton()
             console.log("questionSet")
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer()
@@ -66,6 +67,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+/*
+Function to show Next and reset buttons.
+*/
+function showButton(){
+  console.log("showButton")
+  let next = document.getElementById("btn-next-answer");
+  let reset = document.getElementById("btn-reset-game");
+  console.log("showButton")
+  console.log(next)
+  console.log(reset)
+  next.style.display = "block";
+  reset.style.display = "block";
+}
 
 /*
 Scripts for the Faction Checkbox dropdown.

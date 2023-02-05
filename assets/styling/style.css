@@ -12,6 +12,7 @@ body {
   flex-direction: column;
   height: 120vh;
   min-width: fit-content;
+  
 
 }
 
@@ -21,6 +22,7 @@ header {
     background-color: rgb(255, 172, 82);
     padding: 10px;
     z-index: 2;
+    letter-spacing: 1px;
 }
 
 #header-container {
@@ -60,7 +62,7 @@ header {
 main {
     flex: 1 0 auto;
     height: 150px;
-    background-color: rgb(170, 116, 57);
+    background-color: #A58E5C;
 }
 
 /* footer {
@@ -131,7 +133,7 @@ main {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 3; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -212,13 +214,19 @@ label {
 
 button,
 legend {
-  color: white;
-  background-color: black;
+  color: #ffffff;
+  background-color: #402E32;
   padding: 5px 10px;
   border-radius: 0;
   border: 0;
   font-size: 14px;
   margin: 5px 0px 5px 0px;
+  letter-spacing: 1px;
+}
+
+legend {
+  font-size: larger;
+
 }
 
 
@@ -252,6 +260,10 @@ button:active {
 
 .incorrect-answer {
   background-color: red;
+}
+
+#btn-next-answer, #btn-reset-game{
+  display: none;
 }
 
 /* Form Styling ^ */
