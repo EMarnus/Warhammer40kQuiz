@@ -1,6 +1,6 @@
 import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
 console.log(spaceMarineQuestions);
-import necronQuesions from "./necron.json" assert {type: "json"};
+import necronQuesions from "./necron.json" assert {type: "json"}; //Add another of these for each new faction json file.
 console.log(necronQuesions);
 
 let gameNumber; //This is the index number of current question.
@@ -8,7 +8,7 @@ let gameScore; //For global tracking of game score
 //console.log(gameScore)
 
 /*
-This  stores and retreives Username and score.
+This stores and retreives Username.
 */
 function populateStorage() {
   let name = document.getElementById('player-name').value
@@ -40,6 +40,28 @@ let questionSet = spaceMarineQuestions.concat(necronQuesions);
 console.log(questionSet);
 // Need to add check-box with if () to set questions.
 
+
+/*
+Section for seting Factions used for questions. Get factions selected and pass to be concat
+*/
+function setFactions() {
+  let checkboxes = document.getElementById("checkboxes");
+  let factionCheckbox = checkboxes.getElementsByTagName("input");
+  console.log(factionCheckbox)
+  let selectedFactions = [];
+
+  for (let i = 0, length = factionCheckbox.length; i < length; i++) {
+    if (selectedFactions[i].checked) {
+      console.log(selectedFactions[i].value)
+      //selectedFactions.push(factionCheckbox[i].value)
+      }
+    }
+    console.log(selectedFactions)
+  }
+
+
+
+
 /*
 This funciton is to add event listener to Buttons once page loads
 */
@@ -62,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
               resetGame()
               } else  {
               //for use if more factions are added.
+              window.alert("Oops, something went wrong.")
                 let gameType = this.getAttribute("data-type");
             }
         });
@@ -110,6 +133,7 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
+  setFactions()
 
   //button changes
   let button = document.getElementById("btn-check-answer");
