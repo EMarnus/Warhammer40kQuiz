@@ -20,6 +20,11 @@ header {
     background-color: rgb(255, 172, 82);
 }
 
+#player-name{
+  background-color: rgb(255, 172, 82, 40);
+  border: none;
+}
+
 main {
     flex: 1 0 auto;
     height: 150px;
@@ -112,7 +117,7 @@ label {
   line-height: 32px;
 }
 
-input {
+#answers-area input {
   appearance: none;
 
   border-radius: 50%;
@@ -127,7 +132,7 @@ input {
   top: 4px;
 }
 
-input:checked {
+#answers-area input:checked {
   border: 6px solid black;
 }
 

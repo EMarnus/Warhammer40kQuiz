@@ -11,7 +11,7 @@ let gameScore; //For global tracking of game score
 This  stores and retreives Username and score.
 */
 function populateStorage() {
-  let name = document.getElementById('player-name').innerHTML
+  let name = document.getElementById('player-name').value
   localStorage.setItem("username", name);
 }
 
@@ -20,7 +20,7 @@ function retreiveStorage () {
     return;
   } else {
     let name = localStorage.getItem("username");
-    document.getElementById('player-name').innerHTML = name;
+    document.getElementById('player-name').value = name;
   }
 }
 
