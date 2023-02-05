@@ -1,7 +1,7 @@
 import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
-console.log(spaceMarineQuestions);
+//console.log(spaceMarineQuestions);
 import necronQuesions from "./necron.json" assert {type: "json"}; //Add another of these for each new faction json file.
-console.log(necronQuesions);
+//console.log(necronQuesions);
 
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
@@ -34,10 +34,11 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 /*
 Sets questions for quiz.
 */
-let questionSet = spaceMarineQuestions.concat(necronQuesions); 
+let questionSet = spaceMarineQuestions.concat(necronQuesions);
+let selectedFactions = [];
 //questionSet.push(necronQuesions)
 //questionSet.push(spaceMarineQuestions)
-console.log(questionSet);
+//console.log(questionSet);
 // Need to add check-box with if () to set questions.
 
 
@@ -46,19 +47,23 @@ Section for seting Factions used for questions. Get factions selected and pass t
 */
 function setFactions() {
   let checkboxes = document.getElementById("checkboxes");
-  let factionCheckbox = checkboxes.getElementsByTagName("input");
-  console.log(factionCheckbox)
-  let selectedFactions = [];
+  let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
 
   for (let i = 0, length = factionCheckbox.length; i < length; i++) {
-    if (selectedFactions[i].checked) {
-      console.log(selectedFactions[i].value)
-      //selectedFactions.push(factionCheckbox[i].value)
+    if (factionCheckbox[i].checked) {
+      selectedFactions.push(factionCheckbox[i].value)
       }
     }
-    console.log(selectedFactions)
+    setQuestions()
   }
 
+
+  function setQuestions() {
+    for (let i = 0, length = selectedFactions.length; i < length; i++) {
+      questionSet.concat(selectedFactions[i])
+      }
+      console.log(questionSet)
+    }
 
 
 
@@ -75,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
             startGame()
             populateStorage() // Remove
             showButton()
-            console.log("questionSet")
+            //console.log("questionSet")
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer()
             } else if (this.getAttribute("data-type") === "next") { 
@@ -95,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
 Function to show Next and reset buttons.
 */
 function showButton(){
-  console.log("showButton")
+  //console.log("showButton")
   let next = document.getElementById("btn-next-answer");
   let reset = document.getElementById("btn-reset-game");
 
@@ -228,10 +233,10 @@ function checkAnswer() {
 Scripts to control the Modal from https://www.w3schools.com/howto/howto_css_modals.asp
 */
 // Get the modal
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 
 /*
