@@ -26,6 +26,7 @@ In this section, you should go over the different parts of your project, and des
   <li>Create a json file in the format of the others, need all key pairs in order.</li>
   <li>Create import link in script.js, preferably stay with nameing convention.</li>
   <li>Update line 37 to also concat new file.</li>
+  <li>Add a label and input for it in HTML under id="checkboxes"</li>
   <li>Test and despair, no, that should be all you need.</li>
 </ol>
 

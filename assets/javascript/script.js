@@ -41,7 +41,7 @@ let selectedFactions = [];
 
 
 /*
-Section for setting Factions if any were changed in the dropdown
+Section for setting Factions if any were changed in the dropdown | Purposly left duplicate check off as a joke on the title.
 */
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
@@ -49,13 +49,18 @@ function setFactions() {
   console.log("running setFactions function")
   
   let checkboxes = document.getElementById("checkboxes");
+  console.log(checkboxes)
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
+  console.log(factionCheckbox)
 
   if (opened === true) {
     questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
+      console.log(factionCheckbox[i].checked)
       if (factionCheckbox[i].checked) {
+        console.log(factionCheckbox[i].checked.value)
         selectedFactions.push(factionCheckbox[i].value)
+        console.log(selectedFactions)
         }
       }
   } 
@@ -67,10 +72,12 @@ function setFactions() {
 Function to add selectedFactions to questionSet.
 */
   function setQuestions() {
+    console.log(selectedFactions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      questionSet.concat(selectedFactions[i])
-      }
+      questionSet.push(selectedFactions[i])
       console.log(questionSet)
+      }
+      return questionSet;
     }
 
 
@@ -149,7 +156,6 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
-  setFactions()
 
   //button changes
   let button = document.getElementById("btn-check-answer");
@@ -159,6 +165,7 @@ function startGame () {
   
   //body text changes
   gameNumber = 0;
+  console.log(questionSet)
   document.getElementById("question-text").innerText = questionSet[gameNumber].question;
   document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
   document.getElementById("labelQuestion1").innerText = questionSet[gameNumber].options[1];
@@ -276,5 +283,6 @@ function resetGame (){
 gameNumber = 0;
 gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;
+setFactions()
 startGame ();
 }
