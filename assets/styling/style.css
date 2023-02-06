@@ -74,6 +74,7 @@ main {
 /* Style for the checkbox dropdown */
 .multiselect {
   width: 200px;
+  width: 300px;
 }
 
 .selectBox {
@@ -263,14 +264,14 @@ button:active {
   background-color: red;
 }
 
-#btn-next-answer, #btn-reset-game{
+.hidden {
   display: none;
 }
 
 /* Form Styling ^ */
 
 
-/* Media queries for gallery */
+/* Media queries */
 
 /* For screen size 1200px wide and down */
 @media screen and (max-width: 1200px){

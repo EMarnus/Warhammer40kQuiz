@@ -1,7 +1,7 @@
 import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
-//console.log(spaceMarineQuestions);
+console.log(spaceMarineQuestions);
 import necronQuesions from "./necron.json" assert {type: "json"}; //Add another of these for each new faction json file.
-//console.log(necronQuesions);
+console.log(necronQuesions);
 
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
@@ -47,15 +47,18 @@ Section for setting Factions if any were changed in the dropdown
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
   console.log("running setFactions function")
-  questionSet = [];
+  
   let checkboxes = document.getElementById("checkboxes");
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
 
-  for (let i = 0, length = factionCheckbox.length; i < length; i++) {
-    if (factionCheckbox[i].checked) {
-      selectedFactions.push(factionCheckbox[i].value)
+  if (opened === true) {
+    questionSet = [];
+    for (let i = 0, length = factionCheckbox.length; i < length; i++) {
+      if (factionCheckbox[i].checked) {
+        selectedFactions.push(factionCheckbox[i].value)
+        }
       }
-    }
+  } 
     setQuestions()
   }
 
@@ -101,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-/*
+/**
 Function to show Next and reset buttons.
 */
 function showButton(){
@@ -116,6 +119,7 @@ function showButton(){
 /*
 Scripts for the Faction Checkbox dropdown.
 */
+let opened = false;
 let expanded = false;
 const multiSelect = document.querySelector('.multiselect');
 
@@ -124,6 +128,7 @@ multiSelect.addEventListener('click', function(e) {
     if (!expanded) {
     checkboxes.style.display = "block";
     expanded = true;
+    opened = true;
   } else {
     checkboxes.style.display = "none";
     expanded = false;
@@ -231,7 +236,6 @@ function checkAnswer() {
     document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
     document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
-    document.getElementById("btn-check-answer").setAttribute("class", "")
   }
   
 
@@ -268,7 +272,7 @@ window.onclick = function(event) {
 Function to reset game without reloading page
 */
 function resetGame (){
-document.getElementById("btn-check-answer").setAttribute("class", "")
+//document.getElementById("btn-check-answer").setAttribute("class", "")
 gameNumber = 0;
 gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;

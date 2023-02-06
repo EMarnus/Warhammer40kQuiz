@@ -21,6 +21,14 @@ In this section, you should go over the different parts of your project, and des
   - The area starts with a haiku and once the game is started the text is replaced with a question and 4 answers.
   - Also contains a counter for the question you are on out of total questions.
 
+- __Adding Factions__
+<ol>
+  <li>Create a json file in the format of the others, need all key pairs in order.</li>
+  <li>Create import link in script.js, preferably stay with nameing convention.</li>
+  <li>Update line 37 to also concat new file.</li>
+  <li>Test and despair, no, that should be all you need.</li>
+</ol>
+
 ![Game]()
 
 ### Features Left to Implement
