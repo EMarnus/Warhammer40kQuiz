@@ -35,7 +35,8 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 /*
 Sets questions for quiz.
 */
-let questionSet = spaceMarineQuestions//.concat(necronQuesions); //Default qeustionSet, add concat for any new faction files added.
+let defaultQuestionSet = spaceMarineQuestions.concat(necronQuesions); //Default qeustionSet, add concat for any new faction files added.
+let questionSet = defaultQuestionSet;
 console.log(questionSet)
 console.log(spaceMarineQuestions)
 let selectedFactions = [];
@@ -49,7 +50,8 @@ Section for setting Factions if any were changed in the dropdown | Purposly left
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
   console.log("running setFactions function")
-  
+  questionSet = defaultQuestionSet;
+
   let checkboxes = document.getElementById("checkboxes");
   console.log(checkboxes)
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
@@ -66,9 +68,9 @@ function setFactions() {
         console.log(selectedFactions)
         }
       }
+      setQuestions()
   } 
-    setQuestions()
-  }
+}
 
 
 /**
@@ -175,7 +177,9 @@ function startGame () {
   document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
   document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
   document.getElementById("gameNumber").innerText = gameNumber+1;
-  document.getElementById("questionNumber").innerText = questionSet.length;
+  document.getElementById("questionNumber1").innerText = questionSet.length;
+  document.getElementById("questionNumber2").innerText = questionSet.length;
+  console.log(questionSet.length);
 }
 
 
