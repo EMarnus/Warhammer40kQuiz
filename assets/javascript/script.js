@@ -3,6 +3,7 @@ console.log(spaceMarineQuestions);
 import necronQuesions from "./necron.json" assert {type: "json"}; //Add another of these for each new faction json file.
 console.log(necronQuesions);
 
+
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
 //console.log(gameScore)
@@ -34,8 +35,9 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 /*
 Sets questions for quiz.
 */
-let questionSet = spaceMarineQuestions.concat(necronQuesions); //Default qeustionSet
+let questionSet = spaceMarineQuestions//.concat(necronQuesions); //Default qeustionSet, add concat for any new faction files added.
 console.log(questionSet)
+console.log(spaceMarineQuestions)
 let selectedFactions = [];
 
 
@@ -54,6 +56,7 @@ function setFactions() {
   console.log(factionCheckbox)
 
   if (opened === true) {
+    console.log("Running Opened in setFactions")
     questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
       console.log(factionCheckbox[i].checked)
@@ -74,7 +77,7 @@ Function to add selectedFactions to questionSet.
   function setQuestions() {
     console.log(selectedFactions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      questionSet.push(selectedFactions[i])
+      questionSet.concat(selectedFactions[i])
       console.log(questionSet)
       }
       return questionSet;
