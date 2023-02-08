@@ -1,10 +1,38 @@
-//import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
-fetch("./spacemarine.json")
-  .then(res => console.log(res))
+let spaceMarineQuestions;
+let necronQuesions;
+let defaultQuestionSet;
+let questionSet;
+let selectedFactions = [];
 
-console.log();
-import necronQuesions from "./necron.json" assert {type: "json"}; //Add another of these for each new faction json file.
-console.log(necronQuesions);
+//(import not widley supported....f)import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
+fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.json")
+  .then(res => res.json())
+  .then(data => {
+    spaceMarineQuestions = data;
+   })
+  .then(() => {
+    console.log(spaceMarineQuestions);
+   });
+
+/*
+fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
+  .then(res => res.json())
+    .then(data => console.log(data))
+*/
+fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
+  .then(res => res.json())
+  .then(data => {
+    necronQuesions = data;
+   })
+  .then(() => {
+    console.log(necronQuesions);
+   });
+
+
+// When adding new faction file copy the 3 rows for fetch
+
+console.log(spaceMarineQuestions)
+console.log(necronQuesions)
 
 
 let gameNumber; //This is the index number of current question.
@@ -36,13 +64,9 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 
 
 /*
-Sets questions for quiz.
+Sets default questions for quiz.
 */
-let defaultQuestionSet = spaceMarineQuestions.concat(necronQuesions); //Default qeustionSet, add concat for any new faction files added.
-let questionSet = defaultQuestionSet;
-console.log(questionSet)
-console.log(spaceMarineQuestions)
-let selectedFactions = [];
+
 
 
 
@@ -164,6 +188,9 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
+
+  defaultQuestionSet = spaceMarineQuestions.concat(necronQuesions); //Default qeustionSet, add concat for any new faction files added.
+  questionSet = defaultQuestionSet;
 
   //button changes
   let button = document.getElementById("btn-check-answer");
