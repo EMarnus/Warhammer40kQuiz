@@ -5,8 +5,10 @@ let questionSet;
 let selectedFactions = [];
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
+const questions = {};
 
-
+const spaceMarine = "spaceMarine";
+const necron = "necron";
 
 //(import not widley supported....f)import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.json")
@@ -16,6 +18,8 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.
    })
   .then(() => {
     console.log(spaceMarineQuestions);
+    questions.spaceMarine = spaceMarineQuestions;
+    return questions;
    });
 
 /*
@@ -31,6 +35,8 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json"
    })
   .then(() => {
     console.log(necronQuestions);
+    questions.necron = necronQuestions;
+    return questions;
    });
 
 
@@ -71,9 +77,7 @@ function setFactions() {
   questionSet = defaultQuestionSet;
 
   let checkboxes = document.getElementById("checkboxes");
-  console.log(checkboxes)
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
-  console.log(factionCheckbox)
 
   if (opened === true) {
     console.log("Running Opened in setFactions")
@@ -90,6 +94,7 @@ function setFactions() {
   } 
 }
 
+// Think will need to have if (faction name) => loop through questions.
 
 /**
 Function to add selectedFactions to questionSet.
@@ -97,7 +102,7 @@ Function to add selectedFactions to questionSet.
   function setQuestions() {
     console.log(selectedFactions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      questionSet.concat(selectedFactions[i])
+      questionSet.concat(questions[i])
       console.log(questionSet)
       }
       return questionSet;
@@ -315,13 +320,6 @@ startGame ();
 
 
 // testing
-const questions = {
-  spaceMarine: spaceMarineQuestions,
-  necron: necronQuestions
-};
-
-const strName = "spaceMarine";
-console.log(questions[strName]);
 
 
 // testing 
