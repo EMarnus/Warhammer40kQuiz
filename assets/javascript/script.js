@@ -1,5 +1,8 @@
-import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
-console.log(spaceMarineQuestions);
+//import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
+fetch("./spacemarine.json")
+  .then(res => console.log(res))
+
+console.log();
 import necronQuesions from "./necron.json" assert {type: "json"}; //Add another of these for each new faction json file.
 console.log(necronQuesions);
 
