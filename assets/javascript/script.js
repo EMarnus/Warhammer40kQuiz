@@ -1,8 +1,12 @@
 let spaceMarineQuestions;
-let necronQuesions;
+let necronQuestions;
 let defaultQuestionSet;
 let questionSet;
 let selectedFactions = [];
+let gameNumber; //This is the index number of current question.
+let gameScore; //For global tracking of game score
+
+
 
 //(import not widley supported....f)import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.json")
@@ -19,25 +23,20 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json"
   .then(res => res.json())
     .then(data => console.log(data))
 */
+
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
   .then(res => res.json())
   .then(data => {
-    necronQuesions = data;
+    necronQuestions = data;
    })
   .then(() => {
-    console.log(necronQuesions);
+    console.log(necronQuestions);
    });
 
 
-// When adding new faction file copy the 3 rows for fetch
 
-console.log(spaceMarineQuestions)
-console.log(necronQuesions)
+// When adding new faction file copy the above 8 rows for and customise for file & add a name pair to nameSets.
 
-
-let gameNumber; //This is the index number of current question.
-let gameScore; //For global tracking of game score
-//console.log(gameScore)
 
 /*
 This stores and retreives Username.
@@ -60,14 +59,6 @@ document.addEventListener("load", retreiveStorage());
 
 let nameStorage = document.getElementById("player-name");
 nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
-
-
-
-/*
-Sets default questions for quiz.
-*/
-
-
 
 
 /*
@@ -135,9 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
               } else if (this.getAttribute("data-type") === "reset") { 
               resetGame()
               } else  {
-              //for use if more factions are added.
-              window.alert("Oops, something went wrong.")
-                let gameType = this.getAttribute("data-type");
+              console.log("Unknown Button Type")
             }
         });
     }
@@ -188,8 +177,8 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
-
-  defaultQuestionSet = spaceMarineQuestions.concat(necronQuesions); //Default qeustionSet, add concat for any new faction files added.
+  
+  defaultQuestionSet = spaceMarineQuestions.concat(necronQuestions); //Default qeustionSet, add concat for any new faction files added.
   questionSet = defaultQuestionSet;
 
   //button changes
@@ -323,3 +312,16 @@ document.getElementById("game-score").innerText = gameScore;
 setFactions()
 startGame ();
 }
+
+
+// testing
+const questions = {
+  spaceMarine: spaceMarineQuestions,
+  necron: necronQuestions
+};
+
+const strName = "spaceMarine";
+console.log(questions[strName]);
+
+
+// testing 
