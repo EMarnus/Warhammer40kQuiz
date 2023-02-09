@@ -9,6 +9,8 @@ const questions = {};
 const nextbtn = document.getElementById("btn-next-answer");
 const resetbtn = document.getElementById("btn-reset-game");
 const startbtn = document.getElementById("btn-check-answer");
+const checkboxes = document.getElementById("checkboxes");
+let checkboxesChecked;
 
 //*Add New Faction* Add a new const for the names.
 const spaceMarine = "spaceMarine";
@@ -70,9 +72,22 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 Section for setting Factions| Purposly left duplicate check off as a joke on the title.
 */
 
+function activitiesReset() {
+  console.log("Running activitiesReset")
+       for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkboxesChecked = true;
+        }
+    }
+    checkboxesChecked = false;
+    console.log("End activitiesReset", checkboxesChecked)
+  }
+  
+
 function setDefault () {
 
   //*Add New Faction* Add a new line to add in the new questions
+  questionSet = [];
   defaultQuestionSet = questions[spaceMarine];
   defaultQuestionSet = defaultQuestionSet.concat(questions[necron]);
   questionSet = defaultQuestionSet;
@@ -84,21 +99,26 @@ setTimeout(startbtn.classList.remove("hidden"), 550); // !!! Need a better way
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
   questionSet = defaultQuestionSet;
+  console.log("Question set before activitiesReset", questionSet)
+  activitiesReset()
+  console.log("Question set after activitiesReset", questionSet)
 
-  let checkboxes = document.getElementById("checkboxes");
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
 
   if (opened === true) {
-    //console.log("Running Opened in setFactions")
-    questionSet = [];
+    if (checkboxesChecked === true) {
+      questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
       if (factionCheckbox[i].checked) {
         selectedFactions.push(factionCheckbox[i].value);
-        //console.log(selectedFactions)
         }
       }
       setQuestions();
+    } else {
+      setDefault();
+    }
   } 
+
 }
 
 // Think will need to have if (faction name) => loop through questions.
@@ -134,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
           if (this.getAttribute("data-type") === "start") {
             startGame();
-            populateStorage(); // Remove
+            populateStorage();
             showButton();
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer();
@@ -166,7 +186,7 @@ let expanded = false;
 const multiSelect = document.querySelector('.multiselect');
 
 multiSelect.addEventListener('click', function(e) {
-  const checkboxes = document.getElementById("checkboxes");
+  
     if (!expanded) {
     checkboxes.style.display = "block";
     expanded = true;
@@ -192,7 +212,6 @@ Replace body text with question text and button text/data-type when start is cli
 */
 function startGame () {
   const input = document.getElementsByTagName("input")
-  console.log(input)
   for (const classes of input){
     classes.classList.remove("opacity")
    }
@@ -203,7 +222,7 @@ function startGame () {
   button.setAttribute ("data-type", "submit");
   button.innerHTML = "Check Answer";
   
-  
+  console.log("in gamestart", questionSet)
   //body text changes
   gameNumber = 0;
   document.getElementById("question-text").innerText = questionSet[gameNumber].question;
