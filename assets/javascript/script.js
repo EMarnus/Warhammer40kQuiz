@@ -319,6 +319,7 @@ When the user clicks on the button, open the modal
 */
 function openModal() {
   modal.style.display = "block";
+  document.getElementById("mgame-score").innerText = gameScore;
 }
 
 // When the user clicks on <span> (x), close the modal
