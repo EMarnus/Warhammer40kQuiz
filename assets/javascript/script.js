@@ -75,14 +75,15 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 
 function setDefault () {
 
-  console.log(questions)
-  console.log(questions[necron])
-  
-  
-  defaultQuestionSet = questions[spaceMarine]//.concat(questions[necron]); //Default qeustionSet, add concat for any new faction files added.
+  console.log("Running setDefault")
+
+
+  defaultQuestionSet = questions[spaceMarine];
+  defaultQuestionSet = defaultQuestionSet.concat(questions[necron]);
   questionSet = defaultQuestionSet;
 }
 
+setTimeout(setDefault, 400) // need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
@@ -94,7 +95,7 @@ function setFactions() {
 
   if (opened === true) {
     console.log("Running Opened in setFactions")
-    console.log(questions)
+    questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
       if (factionCheckbox[i].checked) {
         selectedFactions.push(factionCheckbox[i].value)
@@ -120,6 +121,8 @@ Function to add selectedFactions to questionSet.
       console.log(selectedFactions.length)
       if (selectedFactions[i] === "spaceMarine") {
         console.log(selectedFactions[i])
+        console.log("Question set before if spaceMarine", questionHold) 
+        console.log(questions[spaceMarine])
         questionHold = questions[spaceMarine]
         console.log("Question set after if spaceMarine", questionHold) 
       } else if (selectedFactions[i] === "necron" && questionHold.length !== 0) {
@@ -145,7 +148,6 @@ This funciton is to add event listener to Buttons once page loads
 */
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button");
-    setDefault ()
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
@@ -212,6 +214,8 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
+
+  console.log(questionSet)
   
   //button changes
   let button = document.getElementById("btn-check-answer");
@@ -294,6 +298,7 @@ function checkAnswer() {
 
 
   function nextQuestions () {
+    document.getElementById("btn-check-answer").removeAttribute("class", "correct-answer")
     gameNumber = gameNumber +1;
     document.getElementById("question-text").innerText = questionSet[gameNumber].question;
     document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
