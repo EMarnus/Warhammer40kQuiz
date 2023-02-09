@@ -10,6 +10,7 @@ const questions = {};
 const spaceMarine = "spaceMarine";
 const necron = "necron";
 
+
 //(import not widley supported....f)import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.json")
   .then(res => res.json())
@@ -73,8 +74,10 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 */
 
 function setDefault () {
-  console.log(questions.necron)
+
   console.log(questions)
+  console.log(questions[necron])
+  
   
   defaultQuestionSet = questions[spaceMarine]//.concat(questions[necron]); //Default qeustionSet, add concat for any new faction files added.
   questionSet = defaultQuestionSet;
@@ -110,18 +113,29 @@ Function to add selectedFactions to questionSet.
   function setQuestions() {
     console.log("Running setQuestions")
     questionSet = [];
-    console.log(selectedFactions)
+    let questionHold = [];
+    console.log("Selected Factions", selectedFactions)
     console.log(questions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      if (selectedFactions[i] === spaceMarine) {
-        console.log(spaceMarine)
-        questionSet.concat(questions[i])
-      } else if (selectedFactions[i] === necron) {
-        console.log(necron)
-        questionSet.concat(questions[i])
+      console.log(selectedFactions.length)
+      if (selectedFactions[i] === "spaceMarine") {
+        console.log(selectedFactions[i])
+        questionHold = questions[spaceMarine]
+        console.log("Question set after if spaceMarine", questionHold) 
+      } else if (selectedFactions[i] === "necron" && questionHold.length !== 0) {
+        console.log("necron not empty")
+        console.log(questionHold)
+        questionHold.push.apply(questionHold, questions[necron])
+        console.log("Question set after if necron & not empty", questionHold) 
+      } else if (selectedFactions[i] === "necron") {
+        console.log("necron empty")
+        console.log(questions[necron])
+        questionHold = questions[necron]
+        console.log("Question set after if necron & empty ran", questionHold) 
       }
       }
-      return questionSet;
+      questionSet = questionHold;
+      console.log(questionSet)    
     }
 
 
