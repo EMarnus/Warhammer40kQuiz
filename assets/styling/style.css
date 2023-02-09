@@ -147,7 +147,7 @@ main {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #64e764;
+  background-color: rgb(82, 101, 37);
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -257,12 +257,13 @@ button:active {
 }
 
 .correct-answer {
-  background-color: green;
+  background-color: rgb(82, 101, 37);
 }
 
 .incorrect-answer {
-  background-color: red;
+  background-color: rgb(	63, 0, 0);
 }
+
 
 .hidden {
   display: none;

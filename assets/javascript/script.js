@@ -6,6 +6,8 @@ let selectedFactions = [];
 let gameNumber; //This is the index number of current question.
 let gameScore; //For global tracking of game score
 const questions = {};
+const nextbtn = document.getElementById("btn-next-answer");
+const resetbtn = document.getElementById("btn-reset-game");
 
 const spaceMarine = "spaceMarine";
 const necron = "necron";
@@ -83,7 +85,7 @@ function setDefault () {
   questionSet = defaultQuestionSet;
 }
 
-setTimeout(setDefault, 400) // need a better way
+setTimeout(setDefault, 500) // need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
@@ -174,11 +176,10 @@ Function to show Next and reset buttons.
 */
 function showButton(){
   //console.log("showButton")
-  let next = document.getElementById("btn-next-answer");
-  let reset = document.getElementById("btn-reset-game");
 
-  next.style.display = "block";
-  reset.style.display = "block";
+
+  nextbtn.classList.remove("hidden");
+  resetbtn.classList.remove("hidden");
 }
 
 /*
@@ -306,6 +307,13 @@ function checkAnswer() {
     document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
     document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
+
+    console.log("gameNumber", gameNumber+1)
+    console.log("QuestionSet Length", questionSet.length)
+
+    if (gameNumber+1 === questionSet.length){
+      nextbtn.classList.add("hidden");
+    }
   }
   
 
@@ -347,6 +355,7 @@ function resetGame (){
 gameNumber = 0;
 gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;
+nextbtn.classList.remove("hidden");
 setFactions()
 startGame ();
 }
