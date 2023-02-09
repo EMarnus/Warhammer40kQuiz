@@ -54,7 +54,7 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json"
 This stores and retreives Username.
 */
 function populateStorage() {
-  let name = document.getElementById('player-name').value
+  let name = document.getElementById('player-name').value;
   localStorage.setItem("username", name);
 }
 
@@ -86,7 +86,7 @@ function setDefault () {
   questionSet = defaultQuestionSet;
 }
 
-setTimeout(setDefault, 500) // !!! Need a better way
+setTimeout(setDefault, 500); // !!! Need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
@@ -101,11 +101,11 @@ function setFactions() {
     questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
       if (factionCheckbox[i].checked) {
-        selectedFactions.push(factionCheckbox[i].value)
+        selectedFactions.push(factionCheckbox[i].value);
         //console.log(selectedFactions)
         }
       }
-      setQuestions()
+      setQuestions();
   } 
 }
 
@@ -126,17 +126,17 @@ Function to add selectedFactions to questionSet.
         //console.log(selectedFactions[i])
         //console.log("Question set before if spaceMarine", questionHold) 
         //console.log(questions[spaceMarine])
-        questionHold = questions[spaceMarine]
+        questionHold = questions[spaceMarine];
         //onsole.log("Question set after if spaceMarine", questionHold) 
       } else if (selectedFactions[i] === "necron" && questionHold.length !== 0) {
         //console.log("necron not empty")
         //console.log(questionHold)
-        questionHold.push.apply(questionHold, questions[necron])
+        questionHold.push.apply(questionHold, questions[necron]);
         //console.log("Question set after if necron & not empty", questionHold) 
       } else if (selectedFactions[i] === "necron") {
         //console.log("necron empty")
         //console.log(questions[necron])
-        questionHold = questions[necron]
+        questionHold = questions[necron];
         //console.log("Question set after if necron & empty ran", questionHold) 
       }
       }
@@ -155,18 +155,18 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener("click", function() {
           if (this.getAttribute("data-type") === "start") {
-            startGame()
-            populateStorage() // Remove
-            showButton()
+            startGame();
+            populateStorage(); // Remove
+            showButton();
             //console.log("questionSet")
           } else if (this.getAttribute("data-type") === "submit") { 
-            checkAnswer()
+            checkAnswer();
             } else if (this.getAttribute("data-type") === "next") { 
-              nextQuestions()
+              nextQuestions();
               } else if (this.getAttribute("data-type") === "reset") { 
-              resetGame()
+              resetGame();
               } else  {
-              console.log("Unknown Button Type")
+              console.log("Unknown Button Type");
             }
         });
     }
@@ -201,7 +201,7 @@ multiSelect.addEventListener('click', function(e) {
     expanded = false;
   }
   e.stopPropagation();
-}, true)
+}, true);
 
 document.addEventListener('click', function(e){
   if (expanded) {
@@ -209,7 +209,7 @@ document.addEventListener('click', function(e){
     setFactions();
     expanded = false;
   }
-}, false)
+}, false);
 
 
 /*
@@ -217,7 +217,7 @@ Replace body text with question text and button text/data-type when start is cli
 */
 function startGame () {
 
-  console.log(questionSet)
+  console.log(questionSet);
   
   //button changes
   let button = document.getElementById("btn-check-answer");
@@ -249,7 +249,7 @@ function checkAnswer() {
     let labels = document.getElementsByTagName("label");
     
    //Pulls correct Answer
-    let correctAnswer = questionSet[gameNumber].answer //Working
+    let correctAnswer = questionSet[gameNumber].answer; //Working
     //console.log(correctAnswer); //Working
     //console.log(gameNumber)
 
@@ -273,7 +273,7 @@ function checkAnswer() {
         openModal ();
       } else if (selected == correctAnswer){//Answer check correct
         //Something to indicate correct answers
-        document.getElementById("btn-check-answer").setAttribute("class", "correct-answer")
+        document.getElementById("btn-check-answer").setAttribute("class", "correct-answer");
         //nextQuestions ();
         if (!gameScore){
           gameScore = 0;
@@ -281,9 +281,9 @@ function checkAnswer() {
         }
         gameScore = gameScore + 1;
         document.getElementById("game-score").innerText = gameScore;
-        console.log(gameScore)
+        //console.log(gameScore)
       } else {//Answer check incorrect
-        document.getElementById("btn-check-answer").setAttribute("class", "incorrect-answer")
+        document.getElementById("btn-check-answer").setAttribute("class", "incorrect-answer");
         //nextQuestions ();
       }
 
@@ -296,11 +296,11 @@ function checkAnswer() {
         }
     }
       
-      }
+  }
 
 
   function nextQuestions () {
-    document.getElementById("btn-check-answer").removeAttribute("class", "correct-answer")
+    document.getElementById("btn-check-answer").removeAttribute("class", "correct-answer");
     gameNumber = gameNumber +1;
     document.getElementById("question-text").innerText = questionSet[gameNumber].question;
     document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
@@ -357,7 +357,7 @@ gameNumber = 0;
 gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;
 nextbtn.classList.remove("hidden");
-setFactions()
+setFactions();
 startGame ();
 }
 
