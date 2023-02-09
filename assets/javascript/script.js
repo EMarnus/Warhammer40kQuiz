@@ -8,14 +8,13 @@ let gameScore; //For global tracking of game score
 const questions = {};
 const nextbtn = document.getElementById("btn-next-answer");
 const resetbtn = document.getElementById("btn-reset-game");
+const startbtn = document.getElementById("btn-check-answer");
 
 //*Add New Faction* Add a new const for the names.
 const spaceMarine = "spaceMarine";
 const necron = "necron";
 
 
-
-//(import not widley supported....f)import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.json")
   .then(res => res.json())
   .then(data => {
@@ -27,12 +26,6 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.
     return questions;
    });
 
-   //console.log(questions)
-/*
-fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
-  .then(res => res.json())
-    .then(data => console.log(data))
-*/
 
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
   .then(res => res.json())
@@ -78,7 +71,6 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 */
 
 function setDefault () {
-  //console.log("Running setDefault")
 
   //*Add New Faction* Add a new line to add in the new questions
   defaultQuestionSet = questions[spaceMarine];
@@ -87,10 +79,10 @@ function setDefault () {
 }
 
 setTimeout(setDefault, 500); // !!! Need a better way
+setTimeout(startbtn.classList.remove("hidden"), 550); // !!! Need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
-  //console.log("running setFactions function")
   questionSet = defaultQuestionSet;
 
   let checkboxes = document.getElementById("checkboxes");
@@ -115,33 +107,19 @@ function setFactions() {
 Function to add selectedFactions to questionSet.
 */
   function setQuestions() {
-    //console.log("Running setQuestions")
     questionSet = [];
     let questionHold = [];
-    //console.log("Selected Factions", selectedFactions)
-    //console.log(questions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      //console.log(selectedFactions.length)
       if (selectedFactions[i] === "spaceMarine") {
-        //console.log(selectedFactions[i])
-        //console.log("Question set before if spaceMarine", questionHold) 
-        //console.log(questions[spaceMarine])
         questionHold = questions[spaceMarine];
-        //onsole.log("Question set after if spaceMarine", questionHold) 
       } else if (selectedFactions[i] === "necron" && questionHold.length !== 0) {
-        //console.log("necron not empty")
-        //console.log(questionHold)
         questionHold.push.apply(questionHold, questions[necron]);
-        //console.log("Question set after if necron & not empty", questionHold) 
       } else if (selectedFactions[i] === "necron") {
-        //console.log("necron empty")
-        //console.log(questions[necron])
         questionHold = questions[necron];
-        //console.log("Question set after if necron & empty ran", questionHold) 
       }
       }
       questionSet = questionHold;
-      //console.log(questionSet)    
+ 
     }
 
 
@@ -158,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function() {
             startGame();
             populateStorage(); // Remove
             showButton();
-            //console.log("questionSet")
           } else if (this.getAttribute("data-type") === "submit") { 
             checkAnswer();
             } else if (this.getAttribute("data-type") === "next") { 
@@ -176,11 +153,9 @@ document.addEventListener("DOMContentLoaded", function() {
 Function to show Next and reset buttons.
 */
 function showButton(){
-  //console.log("showButton")
-
-
   nextbtn.classList.remove("hidden");
   resetbtn.classList.remove("hidden");
+  
 }
 
 /*
@@ -216,9 +191,13 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
-
-  console.log(questionSet);
+  const input = document.getElementsByTagName("input")
+  console.log(input)
+  for (const classes of input){
+    classes.classList.remove("opacity")
+   }
   
+   
   //button changes
   let button = document.getElementById("btn-check-answer");
   button.setAttribute ("data-type", "submit");
@@ -227,7 +206,6 @@ function startGame () {
   
   //body text changes
   gameNumber = 0;
-  //console.log(questionSet)
   document.getElementById("question-text").innerText = questionSet[gameNumber].question;
   document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
   document.getElementById("labelQuestion1").innerText = questionSet[gameNumber].options[1];
@@ -236,7 +214,6 @@ function startGame () {
   document.getElementById("gameNumber").innerText = gameNumber+1;
   document.getElementById("questionNumber1").innerText = questionSet.length;
   document.getElementById("questionNumber2").innerText = questionSet.length;
-  //console.log(questionSet.length);
 }
 
 
@@ -250,41 +227,31 @@ function checkAnswer() {
     
    //Pulls correct Answer
     let correctAnswer = questionSet[gameNumber].answer; //Working
-    //console.log(correctAnswer); //Working
-    //console.log(gameNumber)
 
     let selected = "";
-    //console.log(selected);
 
     //sets selected answer for above
     for (let i = 0, length = inputs.length; i < length; i++) {
       if (inputs[i].checked) {
         selected = labels[i-1].textContent}
-        //console.log(selected)
       }
-      //console.log(selected);
 
       if (gameNumber == questionSet.length-1 && selected == correctAnswer) { //Answer check correct end of game
         gameScore = gameScore + 1;
         document.getElementById("game-score").innerText = gameScore;
-        //console.log("End of quiz") 
         openModal ();
       } else if (gameNumber == questionSet.length-1 && selected != correctAnswer) { //Answer check incorrect end of game
         openModal ();
       } else if (selected == correctAnswer){//Answer check correct
         //Something to indicate correct answers
         document.getElementById("btn-check-answer").setAttribute("class", "correct-answer");
-        //nextQuestions ();
         if (!gameScore){
           gameScore = 0;
-          //console.log(gameScore)
         }
         gameScore = gameScore + 1;
         document.getElementById("game-score").innerText = gameScore;
-        //console.log(gameScore)
       } else {//Answer check incorrect
         document.getElementById("btn-check-answer").setAttribute("class", "incorrect-answer");
-        //nextQuestions ();
       }
 
       //This deselects the radio button when adding new answers. Taken from https://stackoverflow.com/questions/15784554/how-to-uncheck-radio-button-javascript (Ewald Bos)
@@ -308,9 +275,6 @@ function checkAnswer() {
     document.getElementById("labelQuestion2").innerText = questionSet[gameNumber].options[2];
     document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
-
-    //console.log("gameNumber", gameNumber+1)
-    //console.log("QuestionSet Length", questionSet.length)
 
     if (gameNumber+1 === questionSet.length){
       nextbtn.classList.add("hidden");
@@ -352,7 +316,6 @@ window.onclick = function(event) {
 Function to reset game without reloading page
 */
 function resetGame (){
-//document.getElementById("btn-check-answer").setAttribute("class", "")
 gameNumber = 0;
 gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;
@@ -361,8 +324,3 @@ setFactions();
 startGame ();
 }
 
-
-// testing
-
-
-// testing 

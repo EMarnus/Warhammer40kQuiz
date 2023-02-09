@@ -61,7 +61,6 @@ header {
 
 main {
     flex: 1 0 auto;
-    height: 150px;
     background-color: #A58E5C;
 }
 
@@ -118,8 +117,6 @@ main {
 #game-area {
   box-sizing: border-box;
   width: 85%;
-  /* height: 65vh; */
-  max-height: 450px;
   max-width: 830px;
   margin-left: auto;
   margin-right: auto;
@@ -196,6 +193,10 @@ label {
   line-height: 32px;
 }
 
+.opacity {
+  opacity: 0;
+}
+
 #answers-area input {
   appearance: none;
 
@@ -227,9 +228,13 @@ legend {
   letter-spacing: 1px;
 }
 
+button {
+  border: 2px solid transparent;
+}
+
 legend {
   font-size: larger;
-  width: 100%;
+  /* width: 100%; */
 }
 
 

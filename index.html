@@ -22,7 +22,7 @@
             <h3>Player: <input id="player-name" placeholder="Set name"></h3>
     
             <!-- Score increments up with each correct answer. Down with incorrect? -->
-            <p><h3>Score: <span id="game-score">0</span></h3></p>
+            <h3>Score: <span id="game-score">0</span></h3>
         </div>
         <div id="right-container">
             <form>
@@ -33,7 +33,7 @@
                     </select>
                     <div class="overSelect"></div>
                   </div>
-                  <div id="checkboxes">
+                  <div id="checkboxes" required>
                     <label for="one" >
                       <input type="checkbox" class="factionSelector" value="spaceMarine" id="one" checked/>Space Marine</label>
                     <label for="two">
@@ -72,25 +72,25 @@
                 <!-- Answers set via js, Add randomised Haiku https://tvtropes.org/pmwiki/pmwiki.php/Haiku/Warhammer40000 -->
                 <div id="answers-area">
                     <div>
-                        <input id="question0" type="radio" value="question0" name="answers" required>
+                        <input id="question0" type="radio" class="opacity" value="question0" name="answers" required>
                         <label id="labelQuestion0" class="answer" for="question0">In the grim darkness</label>
                     </div>
                     <div>
-                        <input id="question1" type="radio" value="question1" name="answers">
+                        <input id="question1" type="radio" class="opacity" value="question1" name="answers">
                         <label id="labelQuestion1" class="answer" for="question1">of the far future, there is</label>
                     </div>
                     <div>
-                        <input id="question2" type="radio" value="question2" name="answers">
+                        <input id="question2" type="radio" class="opacity" value="question2" name="answers">
                         <label id="labelQuestion2" class="answer" for="question2">only more dakka.</label>
                     </div>
                     <div>
-                        <input id="question3" type="radio" value="question3" name="answers">
+                        <input id="question3" type="radio" class="opacity" value="question3" name="answers">
                         <label id="labelQuestion3" class="answer" for="question3">— alliterator</label>
                     </div>
                 </div>
                 <div id="buttons">        
                     <!-- only show one button Start button dissapears when game starts -->
-                    <button data-type="start" id="btn-check-answer">Start Game</button>
+                    <button data-type="start" class="hidden" id="btn-check-answer">Start Game</button>
                     <button data-type="next" class="hidden" id="btn-next-answer">Next Quetion</button>
                     <button data-type="reset" class="hidden" id="btn-reset-game"> Reset game</button>
                 </div>

@@ -2,7 +2,7 @@
 
 ### [Live Website](https://emarnus.github.io/Warhammer40kQuiz/)
 
-My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone intereseted. My main goal for the website was to have an easily expandable question pool, I was mostly sucessfull.
+My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone intereseted. My main goal for the website was to have an easily expandable question pool, I was mostly sucessfull. To achive this separate json files were used for the diffarent question sets, and comments were left in script.js where code needs to be add for new files. Very easy to add more questions to existing files, just copy the existing format and they will work in game.
 
 ![Initial Mockup](./assets/images/initial%20wireframe.PNG)
 ![Responsive Mockup](./assets/images/Am%20I%20responsive.PNG)
@@ -37,6 +37,7 @@ My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Java
 - A weighted scoring systme.
 - A hint system.
 - Redesign, not enought Gothic horror.
+- New question validation for json files.
 
 ## Testing 
 
@@ -47,7 +48,7 @@ Ongoing testing on Chrome as features were added. Additional Testing was done de
 ### Validator Testing 
 
 - HTML
-    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-maths%2F)
+    - Only error was with legend element being child of a div [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Femarnus.github.io%2FWarhammer40kQuiz%2F)
 - CSS
     - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Femarnus.github.io%2FWarhammer40kQuiz%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 - JavaScript
@@ -58,9 +59,18 @@ Ongoing testing on Chrome as features were added. Additional Testing was done de
       - Largest function has 22 statements in it, while the median is 2.5.
       - The most complex function has a cyclomatic complexity value of 11 while the median is 1.
 
+### Manual Testing
+## Fixed Bugs
+- The background doesn't cover entire screen on some devices. 
+- Hovor animation moved the buttons.
+- Original import of json files did not work on Firefox, rewrote to use fetch API.
+
 ### Unfixed Bugs
 
-All known bugs have been fixed.
+- Can brute force correct answer.
+- Can submit correct answer multiple times and increase score.
+- Can break game by deselecting all from checkbox
+- Can get to end of game with NaN as score.
 
 ## Deployment
 
