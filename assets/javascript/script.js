@@ -9,8 +9,10 @@ const questions = {};
 const nextbtn = document.getElementById("btn-next-answer");
 const resetbtn = document.getElementById("btn-reset-game");
 
+//*Add New Faction* Add a new const for the names.
 const spaceMarine = "spaceMarine";
 const necron = "necron";
+
 
 
 //(import not widley supported....f)import spaceMarineQuestions from "./spacemarine.json" assert {type: "json"};
@@ -45,7 +47,7 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json"
 
 
 
-// When adding new faction file copy the above 8 rows for and customise for file & add a name pair to nameSets.
+// *Add New Faction* When adding new faction file copy the above 8 rows for and customise for file & add a name pair to nameSets.
 
 
 /*
@@ -76,32 +78,31 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 */
 
 function setDefault () {
+  //console.log("Running setDefault")
 
-  console.log("Running setDefault")
-
-
+  //*Add New Faction* Add a new line to add in the new questions
   defaultQuestionSet = questions[spaceMarine];
   defaultQuestionSet = defaultQuestionSet.concat(questions[necron]);
   questionSet = defaultQuestionSet;
 }
 
-setTimeout(setDefault, 500) // need a better way
+setTimeout(setDefault, 500) // !!! Need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
-  console.log("running setFactions function")
+  //console.log("running setFactions function")
   questionSet = defaultQuestionSet;
 
   let checkboxes = document.getElementById("checkboxes");
   let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
 
   if (opened === true) {
-    console.log("Running Opened in setFactions")
+    //console.log("Running Opened in setFactions")
     questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
       if (factionCheckbox[i].checked) {
         selectedFactions.push(factionCheckbox[i].value)
-        console.log(selectedFactions)
+        //console.log(selectedFactions)
         }
       }
       setQuestions()
@@ -114,33 +115,33 @@ function setFactions() {
 Function to add selectedFactions to questionSet.
 */
   function setQuestions() {
-    console.log("Running setQuestions")
+    //console.log("Running setQuestions")
     questionSet = [];
     let questionHold = [];
-    console.log("Selected Factions", selectedFactions)
-    console.log(questions)
+    //console.log("Selected Factions", selectedFactions)
+    //console.log(questions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      console.log(selectedFactions.length)
+      //console.log(selectedFactions.length)
       if (selectedFactions[i] === "spaceMarine") {
-        console.log(selectedFactions[i])
-        console.log("Question set before if spaceMarine", questionHold) 
-        console.log(questions[spaceMarine])
+        //console.log(selectedFactions[i])
+        //console.log("Question set before if spaceMarine", questionHold) 
+        //console.log(questions[spaceMarine])
         questionHold = questions[spaceMarine]
-        console.log("Question set after if spaceMarine", questionHold) 
+        c//onsole.log("Question set after if spaceMarine", questionHold) 
       } else if (selectedFactions[i] === "necron" && questionHold.length !== 0) {
-        console.log("necron not empty")
-        console.log(questionHold)
+        //console.log("necron not empty")
+        //console.log(questionHold)
         questionHold.push.apply(questionHold, questions[necron])
-        console.log("Question set after if necron & not empty", questionHold) 
+        //console.log("Question set after if necron & not empty", questionHold) 
       } else if (selectedFactions[i] === "necron") {
-        console.log("necron empty")
-        console.log(questions[necron])
+        //console.log("necron empty")
+        //console.log(questions[necron])
         questionHold = questions[necron]
-        console.log("Question set after if necron & empty ran", questionHold) 
+        //console.log("Question set after if necron & empty ran", questionHold) 
       }
       }
       questionSet = questionHold;
-      console.log(questionSet)    
+      //console.log(questionSet)    
     }
 
 
@@ -226,7 +227,7 @@ function startGame () {
   
   //body text changes
   gameNumber = 0;
-  console.log(questionSet)
+  //console.log(questionSet)
   document.getElementById("question-text").innerText = questionSet[gameNumber].question;
   document.getElementById("labelQuestion0").innerText = questionSet[gameNumber].options[0];
   document.getElementById("labelQuestion1").innerText = questionSet[gameNumber].options[1];
@@ -235,7 +236,7 @@ function startGame () {
   document.getElementById("gameNumber").innerText = gameNumber+1;
   document.getElementById("questionNumber1").innerText = questionSet.length;
   document.getElementById("questionNumber2").innerText = questionSet.length;
-  console.log(questionSet.length);
+  //console.log(questionSet.length);
 }
 
 
@@ -249,11 +250,11 @@ function checkAnswer() {
     
    //Pulls correct Answer
     let correctAnswer = questionSet[gameNumber].answer //Working
-    console.log(correctAnswer); //Working
-    console.log(gameNumber)
+    //console.log(correctAnswer); //Working
+    //console.log(gameNumber)
 
     let selected = "";
-    console.log(selected);
+    //console.log(selected);
 
     //sets selected answer for above
     for (let i = 0, length = inputs.length; i < length; i++) {
@@ -261,7 +262,7 @@ function checkAnswer() {
         selected = labels[i-1].textContent}
         //console.log(selected)
       }
-      console.log(selected);
+      //console.log(selected);
 
       if (gameNumber == questionSet.length-1 && selected == correctAnswer) { //Answer check correct end of game
         gameScore = gameScore + 1;
@@ -308,8 +309,8 @@ function checkAnswer() {
     document.getElementById("labelQuestion3").innerText = questionSet[gameNumber].options[3];
     document.getElementById("gameNumber").innerText = gameNumber+1;
 
-    console.log("gameNumber", gameNumber+1)
-    console.log("QuestionSet Length", questionSet.length)
+    //console.log("gameNumber", gameNumber+1)
+    //console.log("QuestionSet Length", questionSet.length)
 
     if (gameNumber+1 === questionSet.length){
       nextbtn.classList.add("hidden");

@@ -2,7 +2,8 @@
 
 My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone intereseted as well as showcasing my coding. The site is built is such a way the the question pool can easily be expanded
 
-![Responsive Mockup]()
+![Initial Mockup](./assets/images/initial%20wireframe.PNG)
+![Responsive Mockup](./assets/images/Am%20I%20responsive.PNG)
 
 ## Features 
 
@@ -24,10 +25,9 @@ In this section, you should go over the different parts of your project, and des
 - __Adding Factions__
 <ol>
   <li>Create a json file in the format of the others, need all key pairs in order.</li>
-  <li>Create import link in script.js, preferably stay with nameing convention.</li>
-  <li>Update line 37 to also concat new file.</li>
+  <li>Search in script.js for *Add New Faction* and add/update</li>
   <li>Add a label and input for it in HTML under id="checkboxes"</li>
-  <li>Test and despair, no, that should be all you need.</li>
+  <li>Test and despair</li>
 </ol>
 
 ![Game]()
