@@ -38,6 +38,7 @@ In this section, you should go over the different parts of your project, and des
 - Multipe hero images based on the question.
 - A weighted scoring systme.
 - A hint system.
+- Redesign, not enought Gothic horror.
 
 ## Testing 
 
