@@ -1,6 +1,8 @@
 # Warhammer 40,000 Quiz
 
-My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone intereseted as well as showcasing my coding. The site is built is such a way the the question pool can easily be expanded
+### [Live Website](https://emarnus.github.io/Warhammer40kQuiz/)
+
+My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone intereseted. My main goal for the website was to have an easily expandable question pool, I was mostly sucessfull.
 
 ![Initial Mockup](./assets/images/initial%20wireframe.PNG)
 ![Responsive Mockup](./assets/images/Am%20I%20responsive.PNG)
@@ -29,8 +31,6 @@ In this section, you should go over the different parts of your project, and des
   <li>Add a label and input for it in HTML under id="checkboxes"</li>
   <li>Test and despair</li>
 </ol>
-
-![Game]()
 
 ### Features Left to Implement
 
