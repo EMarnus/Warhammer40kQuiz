@@ -22,6 +22,7 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.
     return questions;
    });
 
+   console.log(questions)
 /*
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
   .then(res => res.json())
@@ -68,8 +69,17 @@ nameStorage.addEventListener('DOMSubtreeModified', populateStorage);
 
 
 /*
-Section for setting Factions if any were changed in the dropdown | Purposly left duplicate check off as a joke on the title.
+Section for setting Factions| Purposly left duplicate check off as a joke on the title.
 */
+
+function setDefault () {
+  console.log(questions.necron)
+  console.log(questions)
+  
+  defaultQuestionSet = questions[spaceMarine]//.concat(questions[necron]); //Default qeustionSet, add concat for any new faction files added.
+  questionSet = defaultQuestionSet;
+}
+
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
@@ -81,11 +91,9 @@ function setFactions() {
 
   if (opened === true) {
     console.log("Running Opened in setFactions")
-    questionSet = [];
+    console.log(questions)
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
-      console.log(factionCheckbox[i].checked)
       if (factionCheckbox[i].checked) {
-        console.log(factionCheckbox[i].checked.value)
         selectedFactions.push(factionCheckbox[i].value)
         console.log(selectedFactions)
         }
@@ -100,10 +108,18 @@ function setFactions() {
 Function to add selectedFactions to questionSet.
 */
   function setQuestions() {
+    console.log("Running setQuestions")
+    questionSet = [];
     console.log(selectedFactions)
+    console.log(questions)
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
-      questionSet.concat(questions[i])
-      console.log(questionSet)
+      if (selectedFactions[i] === spaceMarine) {
+        console.log(spaceMarine)
+        questionSet.concat(questions[i])
+      } else if (selectedFactions[i] === necron) {
+        console.log(necron)
+        questionSet.concat(questions[i])
+      }
       }
       return questionSet;
     }
@@ -115,7 +131,7 @@ This funciton is to add event listener to Buttons once page loads
 */
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button");
-    
+    setDefault ()
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
@@ -183,9 +199,6 @@ Replace body text with question text and button text/data-type when start is cli
 */
 function startGame () {
   
-  defaultQuestionSet = spaceMarineQuestions.concat(necronQuestions); //Default qeustionSet, add concat for any new faction files added.
-  questionSet = defaultQuestionSet;
-
   //button changes
   let button = document.getElementById("btn-check-answer");
   button.setAttribute ("data-type", "submit");
