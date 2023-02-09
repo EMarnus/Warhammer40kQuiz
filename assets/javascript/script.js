@@ -22,12 +22,12 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.
     spaceMarineQuestions = data;
    })
   .then(() => {
-    console.log(spaceMarineQuestions);
+    //console.log(spaceMarineQuestions);
     questions.spaceMarine = spaceMarineQuestions;
     return questions;
    });
 
-   console.log(questions)
+   //console.log(questions)
 /*
 fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json")
   .then(res => res.json())
@@ -40,7 +40,7 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json"
     necronQuestions = data;
    })
   .then(() => {
-    console.log(necronQuestions);
+    //console.log(necronQuestions);
     questions.necron = necronQuestions;
     return questions;
    });
@@ -127,7 +127,7 @@ Function to add selectedFactions to questionSet.
         //console.log("Question set before if spaceMarine", questionHold) 
         //console.log(questions[spaceMarine])
         questionHold = questions[spaceMarine]
-        c//onsole.log("Question set after if spaceMarine", questionHold) 
+        //onsole.log("Question set after if spaceMarine", questionHold) 
       } else if (selectedFactions[i] === "necron" && questionHold.length !== 0) {
         //console.log("necron not empty")
         //console.log(questionHold)
