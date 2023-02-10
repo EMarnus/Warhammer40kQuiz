@@ -159,11 +159,9 @@ document.addEventListener("DOMContentLoaded", function() {
           } else if (this.getAttribute("data-type") === "submit" && nextQuestionsbtn === false) { 
             checkAnswer();
             nextQuestionsbtn = true;
-            console.log("After submit ends", nextQuestionsbtn)
             } else if (this.getAttribute("data-type") === "next" && nextQuestionsbtn === true) { 
               nextQuestions();
               nextQuestionsbtn = false;
-              console.log("After next ends", nextQuestionsbtn)
               } else if (this.getAttribute("data-type") === "reset") { 
               resetGame();
               } else  {
@@ -215,7 +213,6 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
-  console.log("Running startGame")
   const input = document.getElementsByTagName("input")
   for (const classes of input){
     classes.classList.remove("opacity")
@@ -230,7 +227,6 @@ function startGame () {
   button.setAttribute ("data-type", "submit");
   button.innerHTML = "Check Answer";
   
-  console.log("in gamestart", questionSet)
   //body text changes
   gameNumber = 0;
   document.getElementById("question-text").innerText = questionSet[gameNumber].question;
