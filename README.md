@@ -2,7 +2,7 @@
 
 ### [Live Website](https://emarnus.github.io/Warhammer40kQuiz/)
 
-My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone intereseted. My main goal for the website was to have an easily expandable question pool, I was mostly sucessfull. To achive this separate json files were used for the diffarent question sets, and comments were left in script.js where code needs to be add for new files. Very easy to add more questions to existing files, just copy the existing format and they will work in game.
+My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Javascript. The objective of the site is to provide a fairly simple quiz for anyone interested. My main goal for the website was to have an easily expandable question pool, I was mostly successful. To achieve this separate json files were used for the different question sets, and comments were left in script.js where code needs to be add for new files. Very easy to add more questions to existing files, just copy the existing format and they will work in game.
 
 ![Initial Mockup](./assets/images/initial%20wireframe.PNG)
 ![Responsive Mockup](./assets/images/Am%20I%20responsive.PNG)
@@ -13,7 +13,7 @@ My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Java
 
 - __The Header bar__
 
-  - Featured at the top of the page, the title itroduces the subject content, reinforced by the header image.
+  - Featured at the top of the page, the title introduces the subject content, reinforced by the header image.
   - The users name, set by the user and stored using local API.
   - The score system is a simple increment for a correct answer, on clicking check answer.
 
@@ -34,15 +34,15 @@ My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Java
 ### Features Left to Implement
 
 - More question sets, based on faction and expand question selection.
-- Multipe hero images based on the question.
-- A weighted scoring systme.
+- •	Multiple hero images based on the question.
+- A weighted scoring system.
 - A hint system.
-- Redesign, not enought Gothic horror.
+- Redesign, not enough Gothic horror.
 - New question validation for json files.
 
 ## Testing 
 
-Ongoing testing on Chrome as features were added. Additional Testing was done desktop Edge, Firefox & Mobile Chrome. Manula testing was done for edge cases, that is how infinite score, no checkbox selected and reset game bugs were found.
+Ongoing testing on Chrome as features were added. Additional Testing was done desktop Edge, Firefox & Mobile Chrome. Manual testing was done for edge cases, that is how infinite score, no checkbox selected and reset game bugs were found.
 
 [Incognito Lighthouse](./assets/images/Incognito%20Lighthouse.PNG)
 
@@ -61,9 +61,9 @@ Ongoing testing on Chrome as features were added. Additional Testing was done de
       - The most complex function has a cyclomatic complexity value of 11 while the median is 1.
 
 ### Fixed Bugs
-- Changed name to input to prevend unwanted characters being used.
+- Changed name to input to prevent unwanted characters being used.
 - The background doesn't cover entire screen on some devices. 
-- Hovor animation moved the buttons.
+- Hover animation moved the buttons.
 - Original import of json files did not work on Firefox, rewrote to use fetch API. Sean Young helped parts of this.
 - Can brute force correct answer.
 - Can submit correct answer multiple times and increase score.
@@ -93,7 +93,7 @@ The live link can be found here - https://emarnus.github.io/Warhammer40kQuiz/
 - Local storage - Mentor Can S and https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API & https://stackoverflow.com/questions/47378194/fire-a-function-when-innerhtml-of-element-changes
 - Deselecting Radio buttons script from https://stackoverflow.com/questions/15784554/how-to-uncheck-radio-button-javascript
 - Import from json https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules/
-- Combining quesion arrays https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items?noredirect=1&lq=1 
+- Combining question arrays https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items?noredirect=1&lq=1 
 - Checkbox for faction selection https://stackoverflow.com/questions/17714705/how-to-use-checkbox-inside-select-option
 
 ### Media
