@@ -13,6 +13,10 @@ const checkboxes = document.getElementById("checkboxes");
 let checkboxesChecked = true;
 let factionCheckbox = checkboxes.getElementsByTagName("input");
 console.log(factionCheckbox)
+let checkAnswerbtn = false;
+let nextQuestionsbtn = false;
+
+
 
 //*Add New Faction* Add a new const for the names.
 const spaceMarine = "spaceMarine";
@@ -76,22 +80,16 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 
 function activitiesReset() {
   console.log("Running activitiesReset")
-  console.log(factionCheckbox.length)
-  console.log(factionCheckbox[0].checked)
-  console.log(factionCheckbox[1].checked)
-       for (let i = 0; i < checkboxes.length; i++) {
-        console.log(factionCheckbox[i].checked)
-        if (factionCheckbox[i].checked) {
-          console.log("checked")
-          console.log(factionCheckbox[i].checked)
+  let fcboxes = document.getElementsByClassName("factionSelector")
+       for (let i = 0; i < fcboxes.length; i++) {
+        if (fcboxes[i].checked) {
           checkboxesChecked = true;
+          return checkboxesChecked;
          } else {
-          console.log("else")
           checkboxesChecked = false;
         }
-        console.log("End activitiesReset", checkboxesChecked)
-        return checkboxesChecked;
     }
+    return checkboxesChecked;
   }
   
 
@@ -110,17 +108,12 @@ setTimeout(startbtn.classList.remove("hidden"), 550); // !!! Need a better way
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
   console.log("Running setFactions")
-  console.log(checkboxesChecked)
-  console.log(opened)
 
   questionSet = defaultQuestionSet;
-  console.log("Question set before activitiesReset", questionSet)
   activitiesReset()
-  console.log("Question set after activitiesReset", questionSet)
-
-   //check against this
 
   if (opened === true) {
+
     if (checkboxesChecked === true) {
       questionSet = [];
     for (let i = 0, length = factionCheckbox.length; i < length; i++) {
@@ -129,7 +122,8 @@ function setFactions() {
         }
       }
       setQuestions();
-    } 
+    }
+
   } 
 
 }
@@ -169,10 +163,14 @@ document.addEventListener("DOMContentLoaded", function() {
             startGame();
             populateStorage();
             showButton();
-          } else if (this.getAttribute("data-type") === "submit") { 
+          } else if (this.getAttribute("data-type") === "submit" && nextQuestionsbtn === false) { 
             checkAnswer();
-            } else if (this.getAttribute("data-type") === "next") { 
+            nextQuestionsbtn = true;
+            console.log("After submit ends", nextQuestionsbtn)
+            } else if (this.getAttribute("data-type") === "next" && nextQuestionsbtn === true) { 
               nextQuestions();
+              nextQuestionsbtn = false;
+              console.log("After next ends", nextQuestionsbtn)
               } else if (this.getAttribute("data-type") === "reset") { 
               resetGame();
               } else  {
@@ -229,8 +227,11 @@ function startGame () {
   for (const classes of input){
     classes.classList.remove("opacity")
    }
-  
-   
+
+   if (questionSet.lenght < 1) {
+    setDefault();
+   }
+     
   //button changes
   let button = document.getElementById("btn-check-answer");
   button.setAttribute ("data-type", "submit");
@@ -353,6 +354,7 @@ gameNumber = 0;
 gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;
 nextbtn.classList.remove("hidden");
+nextQuestionsbtn = false;
 setFactions();
 startGame ();
 }
