@@ -10,7 +10,9 @@ const nextbtn = document.getElementById("btn-next-answer");
 const resetbtn = document.getElementById("btn-reset-game");
 const startbtn = document.getElementById("btn-check-answer");
 const checkboxes = document.getElementById("checkboxes");
-let checkboxesChecked;
+let checkboxesChecked = true;
+let factionCheckbox = checkboxes.getElementsByTagName("input");
+console.log(factionCheckbox)
 
 //*Add New Faction* Add a new const for the names.
 const spaceMarine = "spaceMarine";
@@ -74,18 +76,27 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 
 function activitiesReset() {
   console.log("Running activitiesReset")
+  console.log(factionCheckbox.length)
+  console.log(factionCheckbox[0].checked)
+  console.log(factionCheckbox[1].checked)
        for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
+        console.log(factionCheckbox[i].checked)
+        if (factionCheckbox[i].checked) {
+          console.log("checked")
+          console.log(factionCheckbox[i].checked)
           checkboxesChecked = true;
+         } else {
+          console.log("else")
+          checkboxesChecked = false;
         }
+        console.log("End activitiesReset", checkboxesChecked)
+        return checkboxesChecked;
     }
-    checkboxesChecked = false;
-    console.log("End activitiesReset", checkboxesChecked)
   }
   
 
 function setDefault () {
-
+ console.log("Running setDefault")
   //*Add New Faction* Add a new line to add in the new questions
   questionSet = [];
   defaultQuestionSet = questions[spaceMarine];
@@ -98,12 +109,16 @@ setTimeout(startbtn.classList.remove("hidden"), 550); // !!! Need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
+  console.log("Running setFactions")
+  console.log(checkboxesChecked)
+  console.log(opened)
+
   questionSet = defaultQuestionSet;
   console.log("Question set before activitiesReset", questionSet)
   activitiesReset()
   console.log("Question set after activitiesReset", questionSet)
 
-  let factionCheckbox = checkboxes.getElementsByTagName("input"); //check against this
+   //check against this
 
   if (opened === true) {
     if (checkboxesChecked === true) {
@@ -114,19 +129,17 @@ function setFactions() {
         }
       }
       setQuestions();
-    } else {
-      setDefault();
-    }
+    } 
   } 
 
 }
 
-// Think will need to have if (faction name) => loop through questions.
 
 /**
 Function to add selectedFactions to questionSet.
 */
   function setQuestions() {
+    console.log("Running setQuestions")
     questionSet = [];
     let questionHold = [];
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
@@ -211,6 +224,7 @@ document.addEventListener('click', function(e){
 Replace body text with question text and button text/data-type when start is clicked.
 */
 function startGame () {
+  console.log("Running startGame")
   const input = document.getElementsByTagName("input")
   for (const classes of input){
     classes.classList.remove("opacity")
