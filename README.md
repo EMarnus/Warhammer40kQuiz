@@ -85,8 +85,8 @@ The live link can be found here - https://emarnus.github.io/Warhammer40kQuiz/
 
 
 ## Credits 
-Can Sucullu - Mentor at Code Institute
-[Sean Young](https://github.com/seanyoung247), talking through some issues when switching over to fetch API.
+- Can Sucullu - Mentor at Code Institute
+- [Sean Young](https://github.com/seanyoung247), talking through some issues when switching over to fetch API.
 
 ### Content 
 
