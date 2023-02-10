@@ -13,8 +13,9 @@ My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Java
 
 - __The Header bar__
 
-  - Featured at the top of the page, the title itroduces the subject content, reinforced by the header image. The users name, set by the user and the score.
-  The score system is a simple increment for a correct answer.
+  - Featured at the top of the page, the title itroduces the subject content, reinforced by the header image.
+  - The users name, set by the user and stored using local API.
+  - The score system is a simple increment for a correct answer, on clicking check answer.
 
 - __The Game Area__
 
@@ -32,7 +33,7 @@ My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Java
 
 ### Features Left to Implement
 
-- Multiple question sets, based on faction.
+- More question sets, based on faction and expand question selection.
 - Multipe hero images based on the question.
 - A weighted scoring systme.
 - A hint system.
@@ -41,14 +42,14 @@ My Warhammer 40K quiz is meant to be a simple site made using HTML, CSS and Java
 
 ## Testing 
 
-Ongoing testing on Chrome as features were added. Additional Testing was done desktop Edge, Firefox & Mobile Chrome 
+Ongoing testing on Chrome as features were added. Additional Testing was done desktop Edge, Firefox & Mobile Chrome. Manula testing was done for edge cases, that is how infinite score, no checkbox selected and reset game bugs were found.
 
 [Incognito Lighthouse](./assets/images/Incognito%20Lighthouse.PNG)
 
 ### Validator Testing 
 
 - HTML
-    - Only error was with legend element being child of a div [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Femarnus.github.io%2FWarhammer40kQuiz%2F)
+    - Needed to fix some p elements and a legend element to pass [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Femarnus.github.io%2FWarhammer40kQuiz%2F)
 - CSS
     - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Femarnus.github.io%2FWarhammer40kQuiz%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 - JavaScript
@@ -59,18 +60,19 @@ Ongoing testing on Chrome as features were added. Additional Testing was done de
       - Largest function has 22 statements in it, while the median is 2.5.
       - The most complex function has a cyclomatic complexity value of 11 while the median is 1.
 
-### Manual Testing
-## Fixed Bugs
+### Fixed Bugs
+- Changed name to input to prevend unwanted characters being used.
 - The background doesn't cover entire screen on some devices. 
 - Hovor animation moved the buttons.
-- Original import of json files did not work on Firefox, rewrote to use fetch API.
-
-### Unfixed Bugs
-
+- Original import of json files did not work on Firefox, rewrote to use fetch API. Sean Young helped parts of this.
 - Can brute force correct answer.
 - Can submit correct answer multiple times and increase score.
 - Can break game by deselecting all from checkbox
 - Can get to end of game with NaN as score.
+
+### Unfixed Bugs
+
+
 
 ## Deployment
 
@@ -79,12 +81,12 @@ Ongoing testing on Chrome as features were added. Additional Testing was done de
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed - - ribbon display to indicate the successful deployment. 
 
-The live link can be found here - https://code-institute-org.github.io/love-maths/
+The live link can be found here - https://emarnus.github.io/Warhammer40kQuiz/
 
 
 ## Credits 
 Can Sucullu - Mentor at Code Institute
-[Sean Young](https://github.com/seanyoung247)
+[Sean Young](https://github.com/seanyoung247), talking through some issues when switching over to fetch API.
 
 ### Content 
 

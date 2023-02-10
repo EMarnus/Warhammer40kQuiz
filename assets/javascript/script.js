@@ -12,7 +12,6 @@ const startbtn = document.getElementById("btn-check-answer");
 const checkboxes = document.getElementById("checkboxes");
 let checkboxesChecked = true;
 let factionCheckbox = checkboxes.getElementsByTagName("input");
-console.log(factionCheckbox)
 let checkAnswerbtn = false;
 let nextQuestionsbtn = false;
 
@@ -29,7 +28,6 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/spacemarine.
     spaceMarineQuestions = data;
    })
   .then(() => {
-    //console.log(spaceMarineQuestions);
     questions.spaceMarine = spaceMarineQuestions;
     return questions;
    });
@@ -41,7 +39,6 @@ fetch("https://emarnus.github.io/Warhammer40kQuiz/assets/javascript/necron.json"
     necronQuestions = data;
    })
   .then(() => {
-    //console.log(necronQuestions);
     questions.necron = necronQuestions;
     return questions;
    });
@@ -79,7 +76,6 @@ Section for setting Factions| Purposly left duplicate check off as a joke on the
 */
 
 function activitiesReset() {
-  console.log("Running activitiesReset")
   let fcboxes = document.getElementsByClassName("factionSelector")
        for (let i = 0; i < fcboxes.length; i++) {
         if (fcboxes[i].checked) {
@@ -94,7 +90,6 @@ function activitiesReset() {
   
 
 function setDefault () {
- console.log("Running setDefault")
   //*Add New Faction* Add a new line to add in the new questions
   questionSet = [];
   defaultQuestionSet = questions[spaceMarine];
@@ -107,7 +102,6 @@ setTimeout(startbtn.classList.remove("hidden"), 550); // !!! Need a better way
 
 /**Gets checked from dropdown and adds to  selectedFactions*/
 function setFactions() {
-  console.log("Running setFactions")
 
   questionSet = defaultQuestionSet;
   activitiesReset()
@@ -130,10 +124,9 @@ function setFactions() {
 
 
 /**
-Function to add selectedFactions to questionSet.
+Function to add selectedFactions to questionSet. *Add New Faction*
 */
   function setQuestions() {
-    console.log("Running setQuestions")
     questionSet = [];
     let questionHold = [];
     for (let i = 0, length = selectedFactions.length; i < length; i++) {
@@ -355,6 +348,7 @@ gameScore = 0;
 document.getElementById("game-score").innerText = gameScore;
 nextbtn.classList.remove("hidden");
 nextQuestionsbtn = false;
+questionSet = [];
 setFactions();
 startGame ();
 }

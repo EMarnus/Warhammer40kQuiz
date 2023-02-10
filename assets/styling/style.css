@@ -217,7 +217,7 @@ label {
 }
 
 button,
-legend {
+#question-text {
   color: #ffffff;
   background-color: #402E32;
   padding: 5px 10px;
@@ -232,9 +232,8 @@ button {
   border: 2px solid transparent;
 }
 
-legend {
+#question-text {
   font-size: larger;
-  /* width: 100%; */
 }
 
 
